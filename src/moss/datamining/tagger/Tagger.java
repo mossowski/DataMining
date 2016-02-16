@@ -14,8 +14,10 @@ public class Tagger {
 		
 	}
 
+    // --------------------------------------------------------------------------------
+
     /**
-     * Executes python script
+     * Executes Python script
      * 
      * @param fileName
      */

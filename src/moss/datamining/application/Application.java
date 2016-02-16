@@ -36,6 +36,8 @@ public class Application {
                 case 2:
                     document.printDocument();
                     break;
+                default:
+                    break;
             }
         }
 	}

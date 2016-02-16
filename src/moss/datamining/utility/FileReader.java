@@ -14,15 +14,17 @@ public class FileReader {
     public FileReader() {
 
     }
+    
+    // --------------------------------------------------------------------------------
 
     /**
      * Loads data from file
      * 
      * @param file
+     * @return ArrayList<Element>
      */
     public ArrayList<Element> loadData(File file) {
         ArrayList<Element> result = new ArrayList<>();
-
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
@@ -39,9 +41,8 @@ public class FileReader {
             }
         }
         catch (FileNotFoundException anException) {
-            System.out.println("File not found!");
+            System.out.println("File not found!" + anException);
         }
-
         return result;
     }
 
