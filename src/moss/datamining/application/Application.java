@@ -1,10 +1,14 @@
 package moss.datamining.application;
 
 
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import moss.datamining.tagger.Tagger;
 import moss.datamining.utility.Document;
+import moss.datamining.utility.FileReader;
 
 /**
  * @author mossowsk
@@ -15,7 +19,9 @@ public class Application {
 	public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
+        Tagger tagger = new Tagger();
         Document document = new Document();
+        FileReader fileReader = new FileReader();
 
         while (true) {
             System.out.println("0. Exit");
@@ -30,11 +36,18 @@ public class Application {
                     System.exit(0);
                     break;
                 case 1:
-                    Tagger tagger = new Tagger();
                     tagger.execute("eng.txt");
                     break;
                 case 2:
+                	File file = new File("C:/data/tag_eng.txt");
+                	document.setDocument(fileReader.loadData(file));
                     document.printDocument();
+                    break;
+                case 3:
+                	ArrayList<String> pattern = new ArrayList<String>();
+                	pattern.add("NNS");
+                	pattern.add("IN");
+                	document.findByPattern(pattern);
                     break;
                 default:
                     break;

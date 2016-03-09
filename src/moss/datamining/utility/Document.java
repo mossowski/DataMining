@@ -14,17 +14,6 @@ public class Document {
 
     public Document() {
         document = new ArrayList<>();
-        // TODO
-        Element e1 = new Element("house", "NN");
-        Element e2 = new Element("smart", "JJ");
-        Element e3 = new Element("dog", "NN");
-        Element e4 = new Element("lazy", "JJ");
-        Element e5 = new Element("cat", "NN");
-        document.add(e1);
-        document.add(e2);
-        document.add(e3);
-        document.add(e4);
-        document.add(e5);
     }
 
     // --------------------------------------------------------------------------------
@@ -45,7 +34,7 @@ public class Document {
      * @param pattern
      * @return ArrayList<String>
      */
-    public ArrayList<String> findByPattern(ArrayList<String> pattern) {
+    public void findByPattern(ArrayList<String> pattern) {
         ArrayList<String> result = new ArrayList<String>();
         for (int i = 0; i < document.size(); i++) {
             int k = 0;
@@ -53,8 +42,8 @@ public class Document {
             for (int j = i; j < document.size(); j++) {
                 String pos = document.get(j).getPartOfSpeech();
                 String word = document.get(j).getWord();
-                if (pos.equals(pattern.get(k))) {
-                    match += word;
+                if (k < pattern.size() && pos.equals(pattern.get(k))) {
+                    match += word + " ";
                     k++;
                 }
                 else {
@@ -62,10 +51,10 @@ public class Document {
                 }
             }
             if (k == pattern.size()) {
-                result.add(match);
+            	result.add(match);
             }
         }
-        return result;
+        result.forEach((e) -> System.out.println(e));
     }
 
     // --------------------------------------------------------------------------------
@@ -74,7 +63,7 @@ public class Document {
      * Prints document
      */
     public void printDocument() {
-        document.forEach((e) -> System.out.println("word: " + e.getWord() + " pos:" + e.getPartOfSpeech()));
+        document.forEach((e) -> System.out.println(e.getWord() + " " + e.getPartOfSpeech()));
     }
 
 }
