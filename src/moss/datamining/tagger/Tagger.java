@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 public class Tagger {
 	
-	private final static String TAGGER_PATH = "C:/tagger.py";
+	private final static String TAGGER_PATH = "python/tagger.py";
 
 	public Tagger() {
 		

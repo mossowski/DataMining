@@ -11,7 +11,7 @@ public class Tagset {
     public final static String determiner                            = "DT";   // np. a, an, the, every, any, some, each, that, these, this
     public final static String existentialThere                      = "EX";   // np. there
     public final static String foreignWord                           = "FW";   // obce slowo
-    public final static String prepositionOrSubordinatingConjunction = "IN";   // np. above, after, behind, at, into, like, of, upon, near
+    public final static String prepositionOrSubordinatingConjunction = "IN";   // spojnik np. above, after, behind, at, into, like, of, upon, near
     public final static String adjective                             = "JJ";   // przymiotnik np. big, fat, red, sad
     public final static String adjectiveComparative                  = "JJR";  // np. bigger, fatter, redder, sadder
     public final static String adjectiveSuperlative                  = "JJS";  // np. biggest, fattest, reddest, saddest
