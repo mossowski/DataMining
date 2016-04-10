@@ -19,8 +19,8 @@ public class PartOfSpeech {
 
 	public PartOfSpeech() {
 		data = new ArrayList<Document>();
-		stopwords = new ArrayList<String>();
 		fileReader = new FileReader();
+		stopwords = fileReader.loadStopwords(STOPWORDS_PATH);
 	}
 
 	// --------------------------------------------------------------------------------
@@ -28,12 +28,11 @@ public class PartOfSpeech {
 	public void setData() {
 		File folder = new File(TAGGED_DATA_PATH);
 		File[] listOfFiles = folder.listFiles();
-
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				System.out.println("Name : " + file.getName());
 				System.out.println("Path : " + file.getPath());
-				Document document = new Document(fileReader.loadData(file.getPath()));
+				Document document = new Document(fileReader.loadData(file.getPath(), stopwords));
 				data.add(document);
 			}
 		}

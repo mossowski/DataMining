@@ -19,11 +19,11 @@ public class FileReader {
 
 	/**
 	 * Loads data from file
-	 * 
-	 * @param file
-	 * @return ArrayList<Element>
+	 * @param pathName
+	 * @param stopwords
+	 * @return
 	 */
-	public ArrayList<Element> loadData(String pathName) {
+	public ArrayList<Element> loadData(String pathName, ArrayList<String> stopwords) {
 		File file = new File(pathName);
 		ArrayList<Element> result = new ArrayList<>();
 		try (Scanner fileScanner = new Scanner(file)) {
@@ -35,8 +35,10 @@ public class FileReader {
 						// word partOfSpeech
 						String word = lineScanner.next();
 						String partOfSpeech = lineScanner.next();
-						Element element = new Element(word, partOfSpeech);
-						result.add(element);
+						if (!stopwords.contains(word)) {
+							Element element = new Element(word, partOfSpeech);
+							result.add(element);
+						}
 					}
 				}
 			}
