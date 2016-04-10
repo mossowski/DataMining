@@ -10,6 +10,6 @@ dataFile.close()
 tokens = nltk.word_tokenize(text)
 tagged = nltk.pos_tag(tokens)
 # plik z oznaczonym tekstem
-tagFile = open(dataPath + "tag_" + fileName , 'w')
+tagFile = open(dataPath + "tagged/tag_" + fileName , 'w')
 tagFile.write('\n'.join('%s %s' % x for x in tagged))
 tagFile.close()

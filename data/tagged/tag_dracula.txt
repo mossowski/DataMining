@@ -4,11 +4,6 @@ JONATHAN NNP
 HARKER NNP
 'S POS
 JOURNAL NNP
-( (
-_Kept IN
-in IN
-shorthand._ NN
-) )
 _3 NN
 May NNP
 . .
@@ -5593,7 +5588,7 @@ to TO
 the DT
 right NN
 . .
-Soon RB
+Soon IN
 we PRP
 were VBD
 hemmed VBN
@@ -126727,7 +126722,7 @@ look VB
 up RP
 Thomas NNP
 Snelling NNP
-to-day NN
+to-day JJ
 . .
 _Dr NN
 . .
