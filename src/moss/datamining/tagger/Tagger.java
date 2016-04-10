@@ -41,7 +41,7 @@ public class Tagger {
 		File[] listOfFiles = folder.listFiles();
 		int numberOfFiles = listOfFiles.length - 1;
 		System.out.println("------------------TAGGING------------------");
-		System.out.println("Number of files : " + numberOfFiles);
+		System.out.println("Number of files : " + numberOfFiles + "\n");
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				System.out.println("Name : " + file.getName());
