@@ -42,14 +42,6 @@ public class PartOfSpeech {
 		System.out.println("---------------END OF LOADING---------------");
 	}
 
-	public ArrayList<String> getStopwords() {
-		return stopwords;
-	}
-
-	public void setStopwords(ArrayList<String> stopwords) {
-		this.stopwords = stopwords;
-	}
-
 	// --------------------------------------------------------------------------------
 
 	/**
