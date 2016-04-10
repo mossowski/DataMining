@@ -51,19 +51,19 @@ public class Pattern {
 		ArrayList<Descriptor> result = new ArrayList<Descriptor>();
 		for (int i = 0; i < document.size(); i++) {
 			int k = 0;
-			String match = "";
+			StringBuilder match = new StringBuilder();
 			for (int j = i; j < document.size(); j++) {
 				String pos = document.get(j).getPartOfSpeech();
 				String word = document.get(j).getWord();
 				if (k < pattern.size() && pos.equals(pattern.get(k))) {
-					match += word + " ";
+					match.append(word + " ");
 					k++;
 				} else {
 					break;
 				}
 			}
 			if (k == pattern.size()) {
-				Descriptor descriptor = new Descriptor(match);
+				Descriptor descriptor = new Descriptor(match.toString());
 				result.add(descriptor);
 			}
 		}
