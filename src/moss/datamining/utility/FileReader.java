@@ -23,7 +23,8 @@ public class FileReader {
      * @param file
      * @return ArrayList<Element>
      */
-    public ArrayList<Element> loadData(File file) {
+    public ArrayList<Element> loadData(String pathName) {
+    	File file = new File(pathName);
         ArrayList<Element> result = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
@@ -44,6 +45,24 @@ public class FileReader {
             System.out.println("File not found!" + anException);
         }
         return result;
+    }
+    
+    /**
+     * Loads stopwords
+     * @param file
+     * @return
+     */
+    public ArrayList<String> loadStopwords(String pathName) {
+    	File file = new File(pathName);
+    	ArrayList<String> result = new ArrayList<String>();
+    	try (Scanner s = new Scanner(file)){
+    		while (s.hasNext()){
+        	    result.add(s.next());
+        	}
+		} catch (FileNotFoundException anException) {
+			System.out.println("File not found!" + anException);
+		}
+    	return result;
     }
 
 }

@@ -1,25 +1,24 @@
 package moss.datamining.application;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import moss.datamining.partofspeech.PartOfSpeech;
 import moss.datamining.tagger.Tagger;
 import moss.datamining.utility.Document;
 import moss.datamining.utility.FileReader;
 
-/**
- * @author mossowsk
- * @since 6 lut 2016
- */
+import static moss.datamining.utility.Settings.*;
+
 public class Application {
 
-	public static void main(String[] args) {
-
-		Scanner console = new Scanner(System.in);
+	public Application() {
+		PartOfSpeech pos = new PartOfSpeech();
+		FileReader fileReader = new FileReader();
 		Tagger tagger = new Tagger();
 		Document document = new Document();
-		FileReader fileReader = new FileReader();
+		pos.setStopwords(fileReader.loadStopwords(STOPWORDS_PATH));
+		Scanner console = new Scanner(System.in);
 
 		while (true) {
 			System.out.println("0. Exit");
@@ -44,12 +43,10 @@ public class Application {
 					tagger.execute("dracula.txt");
 					break;
 				case 3:
-					File fileEng = new File("C:/data/tag_eng.txt");
-					document.setDocument(fileReader.loadData(fileEng));
+					document.setDocument(fileReader.loadData(ENG_PATH));
 					break;
 				case 4:
-					File fileDracula = new File("C:/data/tag_dracula.txt");
-					document.setDocument(fileReader.loadData(fileDracula));
+					document.setDocument(fileReader.loadData(DRACULA_PATH));
 					break;
 				case 5:
 					document.printDocument();
@@ -58,8 +55,6 @@ public class Application {
 					ArrayList<String> pattern = new ArrayList<String>();
 					pattern.add("JJ");
 					pattern.add("NN");
-					//pattern.add("IN");
-					//pattern.add("JJ");
 					document.findByPattern(pattern);
 					break;
 				default:

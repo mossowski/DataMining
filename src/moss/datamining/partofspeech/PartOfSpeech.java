@@ -11,9 +11,19 @@ import moss.datamining.utility.Document;
 public class PartOfSpeech {
 
     public ArrayList<Document> data;
+    public ArrayList<String> stopwords;
 
     public PartOfSpeech() {
-
+    	data = new ArrayList<Document>();
+    	stopwords = new ArrayList<String>();
     }
+
+	public ArrayList<String> getStopwords() {
+		return stopwords;
+	}
+
+	public void setStopwords(ArrayList<String> stopwords) {
+		this.stopwords = stopwords;
+	}
 
 }
