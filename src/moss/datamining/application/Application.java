@@ -3,15 +3,18 @@ package moss.datamining.application;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import moss.datamining.partofspeech.PartOfSpeech;
+import moss.datamining.model.Data;
+import moss.datamining.model.Document;
 import moss.datamining.tagger.Tagger;
-import moss.datamining.utility.Document;
 
 public class Application {
 
-	public Application() {
-		PartOfSpeech pos = new PartOfSpeech();
+	/**
+	 * Runs application
+	 */
+	public static void run() {
 		Tagger tagger = new Tagger();
+		Data data = new Data();
 		Document document = new Document();
 		Scanner console = new Scanner(System.in);
 
@@ -33,10 +36,10 @@ public class Application {
 				tagger.tagData();
 				break;
 			case 2:
-				pos.setData();
+				data.setData(tagger.getData());
 				break;
 			case 3:
-				pos.printData();
+				data.printData();
 				break;
 			case 4:
 				ArrayList<String> pattern = new ArrayList<String>();

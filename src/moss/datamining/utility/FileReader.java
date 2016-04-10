@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import moss.datamining.model.Element;
+
 /**
  * @author mossowsk
  * @since 15 lut 2016

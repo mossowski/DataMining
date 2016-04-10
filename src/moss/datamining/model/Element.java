@@ -1,4 +1,4 @@
-package moss.datamining.utility;
+package moss.datamining.model;
 
 /**
  * @author mossowsk

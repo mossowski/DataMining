@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
+import moss.datamining.model.Document;
+import moss.datamining.utility.FileReader;
 import static moss.datamining.utility.Settings.*;
 
 /**
@@ -13,8 +16,12 @@ import static moss.datamining.utility.Settings.*;
  */
 public class Tagger {
 
-	public Tagger() {
+	public ArrayList<String> stopwords;
+	public FileReader fileReader;
 
+	public Tagger() {
+		fileReader = new FileReader();
+		stopwords = fileReader.loadStopwords(STOPWORDS_PATH);
 	}
 
 	// --------------------------------------------------------------------------------
@@ -58,6 +65,27 @@ public class Tagger {
 			}
 		}
 		System.out.println("---------------END OF TAGGING---------------");
+	}
+
+	// --------------------------------------------------------------------------------
+
+	public ArrayList<Document> getData() {
+		ArrayList<Document> result = new ArrayList<Document>();
+		File folder = new File(TAGGED_DATA_PATH);
+		File[] listOfFiles = folder.listFiles();
+		int numberOfFiles = listOfFiles.length;
+		System.out.println("------------------LOADING------------------");
+		System.out.println("Number of files : " + numberOfFiles + "\n");
+		for (File file : listOfFiles) {
+			if (file.isFile()) {
+				System.out.println("Name : " + file.getName());
+				System.out.println("Path : " + file.getPath() + "\n");
+				Document document = new Document(fileReader.loadData(file.getPath(), stopwords));
+				result.add(document);
+			}
+		}
+		System.out.println("---------------END OF LOADING---------------");
+		return result;
 	}
 
 }
