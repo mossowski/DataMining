@@ -9,9 +9,9 @@ public class Data {
 	public Data() {
 		data = new ArrayList<Document>();
 	}
-	
+
 	// --------------------------------------------------------------------------------
-	
+
 	public void setData(ArrayList<Document> data) {
 		this.data = data;
 	}

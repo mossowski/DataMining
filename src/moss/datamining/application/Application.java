@@ -1,10 +1,9 @@
 package moss.datamining.application;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
+import moss.datamining.bon.Pattern;
 import moss.datamining.model.Data;
-import moss.datamining.model.Document;
 import moss.datamining.tagger.Tagger;
 
 public class Application {
@@ -15,7 +14,7 @@ public class Application {
 	public static void run() {
 		Tagger tagger = new Tagger();
 		Data data = new Data();
-		Document document = new Document();
+		Pattern pattern = new Pattern();
 		Scanner console = new Scanner(System.in);
 
 		while (true) {
@@ -24,6 +23,7 @@ public class Application {
 			System.out.println("2. Load documents");
 			System.out.println("3. Print data");
 			System.out.println("4. Find by pattern");
+			System.out.println("5. Print descriptors");
 
 			int choice = console.nextInt();
 
@@ -42,10 +42,11 @@ public class Application {
 				data.printData();
 				break;
 			case 4:
-				ArrayList<String> pattern = new ArrayList<String>();
-				pattern.add("JJ");
-				pattern.add("NN");
-				document.findByPattern(pattern);
+				pattern.findDesciptors(data.data);
+				break;
+			case 5:
+				data.data.get(0).printDescriptors();
+				data.data.get(1).printDescriptors();
 				break;
 			default:
 				break;
