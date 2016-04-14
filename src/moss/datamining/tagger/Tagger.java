@@ -46,7 +46,7 @@ public class Tagger {
 	public void tagData() {
 		File folder = new File(DATA_PATH);
 		File[] listOfFiles = folder.listFiles();
-		int numberOfFiles = listOfFiles.length - 1;
+		int numberOfFiles = listOfFiles.length - 2;
 		System.out.println("------------------TAGGING------------------");
 		System.out.println("Number of files : " + numberOfFiles + "\n");
 		for (File file : listOfFiles) {
@@ -80,7 +80,7 @@ public class Tagger {
 			if (file.isFile()) {
 				System.out.println("Name : " + file.getName());
 				System.out.println("Path : " + file.getPath() + "\n");
-				Document document = new Document(fileReader.loadData(file.getPath(), stopwords));
+				Document document = new Document(fileReader.loadData(file.getPath(), stopwords), file.getName());
 				result.add(document);
 			}
 		}

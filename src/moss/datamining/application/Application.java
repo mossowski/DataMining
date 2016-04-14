@@ -5,6 +5,7 @@ import java.util.Scanner;
 import moss.datamining.bon.Pattern;
 import moss.datamining.model.Data;
 import moss.datamining.tagger.Tagger;
+import moss.datamining.utility.FileWriter;
 
 public class Application {
 
@@ -15,6 +16,7 @@ public class Application {
 		Tagger tagger = new Tagger();
 		Data data = new Data();
 		Pattern pattern = new Pattern();
+		FileWriter fileWriter = new FileWriter();
 		Scanner console = new Scanner(System.in);
 
 		while (true) {
@@ -45,8 +47,9 @@ public class Application {
 				pattern.findDesciptors(data.data);
 				break;
 			case 5:
-				data.data.get(0).printDescriptors();
-				data.data.get(1).printDescriptors();
+				for (int i = 0; i < data.data.size(); i++) {
+					fileWriter.saveDescriptors(data.data.get(i).name, data.data.get(i).descriptors);
+				}
 				break;
 			default:
 				break;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Document {
 
+	public String name;
 	public ArrayList<Element> document;
 	public ArrayList<Descriptor> descriptors;
 
@@ -15,13 +16,15 @@ public class Document {
 
 	public Document() {
 		document = new ArrayList<Element>();
+		name = "";
 		descriptors = new ArrayList<Descriptor>();
 	}
 
 	// --------------------------------------------------------------------------------
 
-	public Document(ArrayList<Element> document) {
+	public Document(ArrayList<Element> document, String name) {
 		this.document = document;
+		this.name = name;
 		descriptors = new ArrayList<Descriptor>();
 	}
 
