@@ -9,17 +9,17 @@ import moss.datamining.model.Descriptor;
 
 public class FileWriter {
 
-	public FileWriter() {
-	
-	}
-	
-	public void saveDescriptors(String fileName, ArrayList<Descriptor> descriptors) {
-		try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\descriptors\\" + "desc_" + fileName))) {
-			for (Descriptor descriptor : descriptors)
-				pw.println(descriptor.name);
-		} catch (FileNotFoundException anException) {
-			anException.printStackTrace();
-		}
-	}
+    public FileWriter() {
+
+    }
+
+    public void saveDescriptors(String fileName, ArrayList<Descriptor> descriptors) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\descriptors\\" + "desc_" + fileName))) {
+            for (Descriptor descriptor : descriptors)
+                pw.println(descriptor.name);
+        } catch (FileNotFoundException anException) {
+            anException.printStackTrace();
+        }
+    }
 
 }

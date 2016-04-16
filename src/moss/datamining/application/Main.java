@@ -6,12 +6,13 @@ package moss.datamining.application;
  */
 public class Main {
 
-	/**
-	 * Main method
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Application.run();
-	}
+    /**
+     * Main method
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+        Application.run();
+    }
 
 }

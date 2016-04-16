@@ -6,38 +6,38 @@ package moss.datamining.model;
  */
 public class Element {
 
-	private String word;
-	private String partOfSpeech;
+    private String word;
+    private String partOfSpeech;
 
-	// --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
-	public Element(String word, String partOfSpeech) {
-		this.word = word;
-		this.partOfSpeech = partOfSpeech;
-	}
+    public Element(String word, String partOfSpeech) {
+        this.word = word;
+        this.partOfSpeech = partOfSpeech;
+    }
 
-	// --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
-	public String getWord() {
-		return word;
-	}
+    public String getWord() {
+        return word;
+    }
 
-	// --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
-	public void setWord(String word) {
-		this.word = word;
-	}
+    public void setWord(String word) {
+        this.word = word;
+    }
 
-	// --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
-	public String getPartOfSpeech() {
-		return partOfSpeech;
-	}
+    public String getPartOfSpeech() {
+        return partOfSpeech;
+    }
 
-	// --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 
-	public void setPartOfSpeech(String partOfSpeech) {
-		this.partOfSpeech = partOfSpeech;
-	}
+    public void setPartOfSpeech(String partOfSpeech) {
+        this.partOfSpeech = partOfSpeech;
+    }
 
 }
