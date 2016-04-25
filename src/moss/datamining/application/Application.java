@@ -1,9 +1,11 @@
 package moss.datamining.application;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import moss.datamining.bon.Pattern;
 import moss.datamining.model.Data;
+import moss.datamining.model.Document;
 import moss.datamining.tagger.Tagger;
 import moss.datamining.utility.FileWriter;
 
@@ -38,18 +40,15 @@ public class Application {
                     tagger.tagData();
                     break;
                 case 2:
-                    data.setData(tagger.getData());
+                    data.setDocuments(tagger.getData());
                     break;
                 case 3:
-                    data.printData();
+                    data.printDocuments();
                     break;
                 case 4:
-                    pattern.findDesciptors(data.data);
-                    break;
-                case 5:
-                    for (int i = 0; i < data.data.size(); i++) {
-                        fileWriter.saveDescriptors(data.data.get(i).name, data.data.get(i).descriptors);
-                    }
+                    ArrayList<Document> documents = data.getDocuments();
+                    pattern.findDesciptors(documents);
+                    fileWriter.saveDescriptors(documents);
                     break;
                 default:
                     break;

@@ -33,10 +33,10 @@ public class Pattern {
      * 
      * @param data
      */
-    public void findDesciptors(ArrayList<Document> data) {
-        for (int i = 0; i < data.size(); i++) {
-            for (int j = 0; j < listOfPatterns.size(); j++) {
-                data.get(i).descriptors.addAll(findByPattern(data.get(i).document, listOfPatterns.get(j)));
+    public void findDesciptors(ArrayList<Document> documents) {
+        for (Document document : documents) {
+            for (ArrayList<String> pattern : listOfPatterns) {
+                document.getDescriptors().addAll(findByPattern(document.getElements(), pattern));
             }
         }
     }

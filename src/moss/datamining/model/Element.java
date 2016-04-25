@@ -24,20 +24,8 @@ public class Element {
 
     // --------------------------------------------------------------------------------
 
-    public void setWord(String word) {
-        this.word = word;
-    }
-
-    // --------------------------------------------------------------------------------
-
     public String getPartOfSpeech() {
         return partOfSpeech;
-    }
-
-    // --------------------------------------------------------------------------------
-
-    public void setPartOfSpeech(String partOfSpeech) {
-        this.partOfSpeech = partOfSpeech;
     }
 
 }

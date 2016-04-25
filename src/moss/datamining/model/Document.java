@@ -8,36 +8,42 @@ import java.util.ArrayList;
  */
 public class Document {
 
-    public String name;
-    public ArrayList<Element> document;
-    public ArrayList<Descriptor> descriptors;
+    private String name;
+    private ArrayList<Element> elements;
+    private ArrayList<Descriptor> descriptors;
 
     // --------------------------------------------------------------------------------
 
     public Document() {
-        document = new ArrayList<Element>();
         name = "";
+        elements = new ArrayList<Element>();
         descriptors = new ArrayList<Descriptor>();
     }
 
     // --------------------------------------------------------------------------------
 
-    public Document(ArrayList<Element> document, String name) {
-        this.document = document;
+    public Document(ArrayList<Element> elements, String name) {
         this.name = name;
+        this.elements = elements;
         descriptors = new ArrayList<Descriptor>();
     }
 
     // --------------------------------------------------------------------------------
 
-    public ArrayList<Element> getDocument() {
-        return document;
+    public String getName() {
+        return name;
     }
 
     // --------------------------------------------------------------------------------
 
-    public void setDocument(ArrayList<Element> document) {
-        this.document = document;
+    public ArrayList<Element> getElements() {
+        return elements;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public ArrayList<Descriptor> getDescriptors() {
+        return descriptors;
     }
 
     // --------------------------------------------------------------------------------
@@ -47,7 +53,7 @@ public class Document {
      */
     public void printDescriptors() {
         System.out.println("--------------------------------");
-        descriptors.forEach((e) -> System.out.println(e.name));
+        descriptors.forEach((e) -> System.out.println(e.getName()));
     }
 
     // --------------------------------------------------------------------------------
@@ -55,8 +61,8 @@ public class Document {
     /**
      * Prints document
      */
-    public void printDocument() {
-        document.forEach((e) -> System.out.println(e.getWord() + " " + e.getPartOfSpeech()));
+    public void printElements() {
+        elements.forEach((e) -> System.out.println(e.getWord() + " " + e.getPartOfSpeech()));
     }
 
 }

@@ -4,16 +4,22 @@ import java.util.ArrayList;
 
 public class Data {
 
-    public ArrayList<Document> data;
+    private ArrayList<Document> documents;
 
     public Data() {
-        data = new ArrayList<Document>();
+        documents = new ArrayList<Document>();
     }
 
     // --------------------------------------------------------------------------------
 
-    public void setData(ArrayList<Document> data) {
-        this.data = data;
+    public ArrayList<Document> getDocuments() {
+        return this.documents;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void setDocuments(ArrayList<Document> documents) {
+        this.documents = documents;
     }
 
     // --------------------------------------------------------------------------------
@@ -21,8 +27,8 @@ public class Data {
     /**
      * Prints data
      */
-    public void printData() {
-        data.forEach((document) -> document.printDocument());
+    public void printDocuments() {
+        documents.forEach((document) -> document.printElements());
     }
 
 }

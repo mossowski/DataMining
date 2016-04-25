@@ -2,12 +2,30 @@ package moss.datamining.model;
 
 public class Descriptor {
 
-    public String name;
-    public int numberOfDescriptors;
+    private String name;
+    private int numberOfDescriptors;
 
     public Descriptor(String name) {
         this.name = name;
-        numberOfDescriptors = 0;
+        setNumberOfDescriptors(0);
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public String getName() {
+        return name;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public int getNumberOfDescriptors() {
+        return numberOfDescriptors;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void setNumberOfDescriptors(int numberOfDescriptors) {
+        this.numberOfDescriptors = numberOfDescriptors;
     }
 
 }
