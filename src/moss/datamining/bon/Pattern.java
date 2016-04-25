@@ -36,8 +36,10 @@ public class Pattern {
     public void findDesciptors(ArrayList<Document> documents) {
         for (Document document : documents) {
             for (ArrayList<String> pattern : listOfPatterns) {
-                document.getDescriptors().addAll(findByPattern(document.getElements(), pattern));
+                ArrayList<Descriptor> descriptors = findByPattern(document.getElements(), pattern);
+                document.getDescriptors().addAll(descriptors);
             }
+            System.out.println("Descriptor : " + document.getDescriptors().size());
         }
     }
 
@@ -71,7 +73,7 @@ public class Pattern {
                 for (Descriptor desc : result) {
                     String descName = desc.getName();
                     if (descName.equals(name)) {
-                        desc.increaseNumber();
+                        desc.increaseDocumentNumber();
                         isAdded = true;
                     }
                 }

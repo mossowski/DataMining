@@ -3,6 +3,7 @@ package moss.datamining.application;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import moss.datamining.bon.BagOfNounPhrases;
 import moss.datamining.bon.Pattern;
 import moss.datamining.model.Data;
 import moss.datamining.model.Document;
@@ -18,6 +19,7 @@ public class Application {
         Tagger tagger = new Tagger();
         Data data = new Data();
         Pattern pattern = new Pattern();
+        BagOfNounPhrases bon = new BagOfNounPhrases();
         FileWriter fileWriter = new FileWriter();
         Scanner console = new Scanner(System.in);
 
@@ -25,8 +27,8 @@ public class Application {
             System.out.println("0. Exit");
             System.out.println("1. Execute tagger");
             System.out.println("2. Load documents");
-            System.out.println("3. Print data");
-            System.out.println("4. Find by pattern");
+            System.out.println("3. Find by pattern");
+            System.out.println("4. Find all descriptors");
 
             int choice = console.nextInt();
 
@@ -42,12 +44,14 @@ public class Application {
                     data.setDocuments(tagger.getData());
                     break;
                 case 3:
-                    data.printDocuments();
-                    break;
-                case 4:
                     ArrayList<Document> documents = data.getDocuments();
                     pattern.findDesciptors(documents);
                     fileWriter.saveDescriptors(documents);
+                    break;
+                case 4:
+                    documents = data.getDocuments();
+                    bon.findDesciptors(documents);
+                    fileWriter.saveDescriptors();
                     break;
                 default:
                     break;

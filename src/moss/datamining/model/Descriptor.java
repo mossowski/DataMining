@@ -3,11 +3,13 @@ package moss.datamining.model;
 public class Descriptor {
 
     private String name;
-    private int number;
+    private int documentNumber;
+    private int dataNumber;
 
     public Descriptor(String name, int number) {
         this.name = name;
-        this.number = number;
+        this.documentNumber = number;
+        this.dataNumber = 1;
     }
 
     // --------------------------------------------------------------------------------
@@ -18,14 +20,32 @@ public class Descriptor {
 
     // --------------------------------------------------------------------------------
 
-    public int getNumber() {
-        return number;
+    public int getDocumentNumber() {
+        return documentNumber;
     }
 
     // --------------------------------------------------------------------------------
 
-    public void increaseNumber() {
-        this.number++;
+    public void setDocumentNumber(int number) {
+        this.documentNumber = number;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void increaseDocumentNumber() {
+        this.documentNumber++;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public int getDataNumber() {
+        return dataNumber;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void increaseDataNumber() {
+        this.dataNumber++;
     }
 
 }
