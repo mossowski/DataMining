@@ -27,7 +27,6 @@ public class Application {
             System.out.println("2. Load documents");
             System.out.println("3. Print data");
             System.out.println("4. Find by pattern");
-            System.out.println("5. Print descriptors");
 
             int choice = console.nextInt();
 

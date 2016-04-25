@@ -65,8 +65,18 @@ public class Pattern {
                 }
             }
             if (k == pattern.size()) {
-                Descriptor descriptor = new Descriptor(match.toString());
-                result.add(descriptor);
+                boolean isAdded = false;
+                Descriptor descriptor = new Descriptor(match.toString(), 1);
+                String name = descriptor.getName();
+                for (Descriptor desc : result) {
+                    String descName = desc.getName();
+                    if (descName.equals(name)) {
+                        desc.increaseNumber();
+                        isAdded = true;
+                    }
+                }
+                if (!isAdded)
+                    result.add(descriptor);
             }
         }
         return result;

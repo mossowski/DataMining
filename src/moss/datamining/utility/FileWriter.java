@@ -21,10 +21,12 @@ public class FileWriter {
             String fileName = document.getName();
             ArrayList<Descriptor> descriptors = document.getDescriptors();
             try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\descriptors\\" + "desc_" + fileName))) {
-                for (Descriptor descriptor : descriptors)
-                    pw.println(descriptor.getName());
+                for (Descriptor descriptor : descriptors) {
+                    StringBuilder line = new StringBuilder(descriptor.getName() + " " + descriptor.getNumber());
+                    pw.println(line);
+                }
             } catch (FileNotFoundException anException) {
-                anException.printStackTrace();
+                System.out.println("File not found!" + anException);
             }
         }
     }
