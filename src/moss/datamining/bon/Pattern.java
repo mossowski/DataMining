@@ -39,7 +39,7 @@ public class Pattern {
                 ArrayList<Descriptor> descriptors = findByPattern(document.getElements(), pattern);
                 document.getDescriptors().addAll(descriptors);
             }
-            System.out.println("Descriptor : " + document.getDescriptors().size());
+            //System.out.println("Descriptor : " + document.getDescriptors().size());
         }
     }
 
@@ -60,7 +60,12 @@ public class Pattern {
                 String pos = document.get(j).getPartOfSpeech();
                 String word = document.get(j).getWord();
                 if (k < pattern.size() && pos.equals(pattern.get(k))) {
-                    match.append(word + " ");
+                    if (k == 0) {
+                        match.append(word);
+                    }
+                    else {
+                        match.append(" " + word);
+                    }
                     k++;
                 } else {
                     break;

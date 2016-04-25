@@ -19,6 +19,7 @@ public class BagOfNounPhrases {
             for (Descriptor theDescriptor : theDescriptors) {
                 boolean isAdded = false;
                 String theName = theDescriptor.getName();
+                int theDocumentNumber = theDescriptor.getDocumentNumber();
                 for (Descriptor descriptor : descriptors) {
                     String name = descriptor.getName();
                     if (theName.equals(name)) {
@@ -28,11 +29,13 @@ public class BagOfNounPhrases {
                         isAdded = true;
                     }
                 }
-                if (!isAdded)
-                    descriptors.add(theDescriptor);
+                if (!isAdded) {
+                    Descriptor descriptor = new Descriptor(theName, theDocumentNumber);
+                    descriptors.add(descriptor);
+                }
             }
         }
-        System.out.println("Descriptors : " + descriptors.size());
+        //System.out.println("Descriptors : " + descriptors.size());
     }
 
 }
