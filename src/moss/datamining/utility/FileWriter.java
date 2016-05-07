@@ -12,13 +12,9 @@ import moss.datamining.model.Document;
 
 public class FileWriter {
 
-    public FileWriter() {
-
-    }
-
     // --------------------------------------------------------------------------------
 
-    public void saveDescriptors(ArrayList<Document> documents) {
+    public static void saveDescriptors(ArrayList<Document> documents) {
         for (Document document : documents) {
             String fileName = document.getName();
             ArrayList<Descriptor> descriptors = document.getDescriptors();
@@ -35,7 +31,7 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
-    public void saveDescriptors() {
+    public static void saveDescriptors() {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\bon\\" + "descriptors.txt"))) {
             for (DataDescriptor dataDescriptor : BagOfNounPhrases.dataDescriptors) {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "

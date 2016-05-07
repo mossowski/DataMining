@@ -13,10 +13,6 @@ import moss.datamining.model.Element;
  */
 public class FileReader {
 
-    public FileReader() {
-
-    }
-
     // --------------------------------------------------------------------------------
 
     /**
@@ -26,8 +22,9 @@ public class FileReader {
      * @param stopwords
      * @return
      */
-    public ArrayList<Element> loadData(String pathName, ArrayList<String> stopwords) {
+    public static ArrayList<Element> loadData(String pathName, String stopwordsPathName) {
         File file = new File(pathName);
+        ArrayList<String> stopwords = loadStopwords(stopwordsPathName);
         ArrayList<Element> result = new ArrayList<>();
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
@@ -59,7 +56,7 @@ public class FileReader {
      * @param file
      * @return
      */
-    public ArrayList<String> loadStopwords(String pathName) {
+    public static ArrayList<String> loadStopwords(String pathName) {
         File file = new File(pathName);
         ArrayList<String> result = new ArrayList<String>();
         try (Scanner s = new Scanner(file)) {

@@ -8,11 +8,10 @@ import moss.datamining.model.Element;
 
 public class Pattern {
 
-    public ArrayList<ArrayList<String>> listOfPatterns;
+    public static ArrayList<ArrayList<String>> listOfPatterns = init();
 
-    public Pattern() {
-        listOfPatterns = new ArrayList<ArrayList<String>>();
-
+    public static ArrayList<ArrayList<String>> init() {
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         // TODO
         ArrayList<String> p1 = new ArrayList<String>();
         p1.add("JJ");
@@ -22,8 +21,10 @@ public class Pattern {
         p2.add("NN");
         p2.add("NN");
 
-        listOfPatterns.add(p1);
-        listOfPatterns.add(p2);
+        result.add(p1);
+        result.add(p2);
+
+        return result;
     }
 
     // --------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ public class Pattern {
      * 
      * @param data
      */
-    public void findDesciptors(ArrayList<Document> documents) {
+    public static void findDesciptors(ArrayList<Document> documents) {
         for (Document document : documents) {
             for (ArrayList<String> pattern : listOfPatterns) {
                 ArrayList<Descriptor> descriptors = findByPattern(document, pattern);
@@ -50,7 +51,7 @@ public class Pattern {
      * @param pattern
      * @return ArrayList<String>
      */
-    public ArrayList<Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
+    public static ArrayList<Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
         ArrayList<Descriptor> descriptors = document.getDescriptors();
         ArrayList<Element> elements = document.getElements();
         for (int i = 0; i < elements.size(); i++) {
