@@ -11,6 +11,7 @@ public class Document {
     private String name;
     private ArrayList<Element> elements;
     private ArrayList<Descriptor> descriptors;
+    private int occurrenceNumber;
 
     // --------------------------------------------------------------------------------
 
@@ -18,6 +19,7 @@ public class Document {
         name = "";
         elements = new ArrayList<Element>();
         descriptors = new ArrayList<Descriptor>();
+        occurrenceNumber = 0;
     }
 
     // --------------------------------------------------------------------------------
@@ -50,7 +52,18 @@ public class Document {
 
     public void setDescriptors(ArrayList<Descriptor> descriptors) {
         this.descriptors = descriptors;
+    }
 
+    // --------------------------------------------------------------------------------
+
+    public int getOccurrenceNumber() {
+        return occurrenceNumber;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public int increaseOccurrenceNumber() {
+        return occurrenceNumber++;
     }
 
     // --------------------------------------------------------------------------------

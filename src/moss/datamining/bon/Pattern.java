@@ -78,11 +78,14 @@ public class Pattern {
                     String descName = desc.getName();
                     if (descName.equals(name)) {
                         desc.increaseNumber();
+                        document.increaseOccurrenceNumber();
                         isAdded = true;
                     }
                 }
-                if (!isAdded)
+                if (!isAdded) {
                     descriptors.add(descriptor);
+                    document.increaseOccurrenceNumber();
+                }
             }
         }
         return descriptors;
