@@ -46,12 +46,14 @@ public class Application {
                 case 3:
                     ArrayList<Document> documents = data.getDocuments();
                     pattern.findDesciptors(documents);
-                    fileWriter.saveDescriptors(documents);
+                    // fileWriter.saveDescriptors(documents);
                     break;
                 case 4:
                     documents = data.getDocuments();
-                    bon.findDesciptors(documents);
+                    bon.findDataDesciptors(documents);
                     fileWriter.saveDescriptors();
+                    bon.addDataDesciptors(documents);
+                    fileWriter.saveDescriptors(documents);
                     break;
                 default:
                     break;

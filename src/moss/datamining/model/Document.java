@@ -48,6 +48,13 @@ public class Document {
 
     // --------------------------------------------------------------------------------
 
+    public void setDescriptors(ArrayList<Descriptor> descriptors) {
+        this.descriptors = descriptors;
+
+    }
+
+    // --------------------------------------------------------------------------------
+
     /**
      * Prints descriptors
      */

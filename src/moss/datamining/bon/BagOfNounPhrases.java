@@ -2,40 +2,61 @@ package moss.datamining.bon;
 
 import java.util.ArrayList;
 
+import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 
 public class BagOfNounPhrases {
 
-    public static ArrayList<Descriptor> descriptors;
+    public static ArrayList<DataDescriptor> dataDescriptors;
 
     public BagOfNounPhrases() {
-        descriptors = new ArrayList<Descriptor>();
+        dataDescriptors = new ArrayList<DataDescriptor>();
     }
 
-    public void findDesciptors(ArrayList<Document> documents) {
+    public void findDataDesciptors(ArrayList<Document> documents) {
         for (Document document : documents) {
-            ArrayList<Descriptor> theDescriptors = document.getDescriptors();
-            for (Descriptor theDescriptor : theDescriptors) {
+            ArrayList<Descriptor> descriptors = document.getDescriptors();
+            for (Descriptor descriptor : descriptors) {
                 boolean isAdded = false;
-                String theName = theDescriptor.getName();
-                int theDocumentNumber = theDescriptor.getDocumentNumber();
-                for (Descriptor descriptor : descriptors) {
-                    String name = descriptor.getName();
-                    if (theName.equals(name)) {
-                        int number = descriptor.getDocumentNumber() + theDescriptor.getDocumentNumber();
-                        descriptor.setDocumentNumber(number);
-                        descriptor.increaseDataNumber();
+                String descriptorName = descriptor.getName();
+                int descriptorNumber = descriptor.getNumber();
+                for (DataDescriptor dataDescriptor : dataDescriptors) {
+                    String name = dataDescriptor.getName();
+                    if (descriptorName.equals(name)) {
+                        int number = descriptor.getNumber() + dataDescriptor.getNumber();
+                        dataDescriptor.setNumber(number);
+                        dataDescriptor.increaseDataNumber();
                         isAdded = true;
                     }
                 }
                 if (!isAdded) {
-                    Descriptor descriptor = new Descriptor(theName, theDocumentNumber);
+                    DataDescriptor dataDescriptor = new DataDescriptor(descriptorName, descriptorNumber);
+                    dataDescriptors.add(dataDescriptor);
+                }
+            }
+        }
+        // System.out.println("Descriptors : " + descriptors.size());
+    }
+
+    public void addDataDesciptors(ArrayList<Document> documents) {
+        for (Document document : documents) {
+            ArrayList<Descriptor> descriptors = document.getDescriptors();
+            for (DataDescriptor dataDescriptor : dataDescriptors) {
+                boolean isAdded = false;
+                String name = dataDescriptor.getName();
+                for (Descriptor descriptor : descriptors) {
+                    String descriptorName = descriptor.getName();
+                    if (descriptorName.equals(name)) {
+                        isAdded = true;
+                    }
+                }
+                if (!isAdded) {
+                    Descriptor descriptor = new Descriptor(name, 0);
                     descriptors.add(descriptor);
                 }
             }
         }
-        //System.out.println("Descriptors : " + descriptors.size());
     }
 
 }

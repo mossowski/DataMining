@@ -36,10 +36,9 @@ public class Pattern {
     public void findDesciptors(ArrayList<Document> documents) {
         for (Document document : documents) {
             for (ArrayList<String> pattern : listOfPatterns) {
-                ArrayList<Descriptor> descriptors = findByPattern(document.getElements(), pattern);
-                document.getDescriptors().addAll(descriptors);
+                ArrayList<Descriptor> descriptors = findByPattern(document, pattern);
+                document.setDescriptors(descriptors);
             }
-            //System.out.println("Descriptor : " + document.getDescriptors().size());
         }
     }
 
@@ -51,19 +50,19 @@ public class Pattern {
      * @param pattern
      * @return ArrayList<String>
      */
-    public ArrayList<Descriptor> findByPattern(ArrayList<Element> document, ArrayList<String> pattern) {
-        ArrayList<Descriptor> result = new ArrayList<Descriptor>();
-        for (int i = 0; i < document.size(); i++) {
+    public ArrayList<Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
+        ArrayList<Descriptor> descriptors = document.getDescriptors();
+        ArrayList<Element> elements = document.getElements();
+        for (int i = 0; i < elements.size(); i++) {
             int k = 0;
             StringBuilder match = new StringBuilder();
-            for (int j = i; j < document.size(); j++) {
-                String pos = document.get(j).getPartOfSpeech();
-                String word = document.get(j).getWord();
+            for (int j = i; j < elements.size(); j++) {
+                String pos = elements.get(j).getPartOfSpeech();
+                String word = elements.get(j).getWord();
                 if (k < pattern.size() && pos.equals(pattern.get(k))) {
                     if (k == 0) {
                         match.append(word);
-                    }
-                    else {
+                    } else {
                         match.append(" " + word);
                     }
                     k++;
@@ -75,18 +74,18 @@ public class Pattern {
                 boolean isAdded = false;
                 Descriptor descriptor = new Descriptor(match.toString(), 1);
                 String name = descriptor.getName();
-                for (Descriptor desc : result) {
+                for (Descriptor desc : descriptors) {
                     String descName = desc.getName();
                     if (descName.equals(name)) {
-                        desc.increaseDocumentNumber();
+                        desc.increaseNumber();
                         isAdded = true;
                     }
                 }
                 if (!isAdded)
-                    result.add(descriptor);
+                    descriptors.add(descriptor);
             }
         }
-        return result;
+        return descriptors;
     }
 
 }
