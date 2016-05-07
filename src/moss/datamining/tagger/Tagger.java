@@ -5,11 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-
 import moss.datamining.model.Document;
 import static moss.datamining.utility.Settings.*;
 import static moss.datamining.utility.FileReader.*;
+import static moss.datamining.bon.Data.*;
 
 /**
  * @author mossowsk
@@ -39,7 +38,7 @@ public class Tagger {
     public static void tagData() {
         File folder = new File(DATA_PATH);
         File[] listOfFiles = folder.listFiles();
-        int numberOfFiles = listOfFiles.length - 2;
+        int numberOfFiles = listOfFiles.length - 3;
         System.out.println("------------------TAGGING------------------");
         System.out.println("Number of files : " + numberOfFiles + "\n");
         for (File file : listOfFiles) {
@@ -64,8 +63,7 @@ public class Tagger {
 
     // --------------------------------------------------------------------------------
 
-    public static ArrayList<Document> getData() {
-        ArrayList<Document> result = new ArrayList<Document>();
+    public static void getData() {
         File folder = new File(TAGGED_DATA_PATH);
         File[] listOfFiles = folder.listFiles();
         int numberOfFiles = listOfFiles.length;
@@ -78,11 +76,10 @@ public class Tagger {
                 System.out.println("Name : " + fileName);
                 System.out.println("Path : " + filePath + "\n");
                 Document document = new Document(loadData(filePath, STOPWORDS_PATH), fileName);
-                result.add(document);
+                documents.add(document);
             }
         }
         System.out.println("---------------END OF LOADING---------------");
-        return result;
     }
 
 }

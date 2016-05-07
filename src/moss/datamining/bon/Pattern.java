@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 import moss.datamining.model.Element;
+import static moss.datamining.bon.Data.*;
 
 public class Pattern {
 
@@ -34,7 +35,7 @@ public class Pattern {
      * 
      * @param data
      */
-    public static void findDesciptors(ArrayList<Document> documents) {
+    public static void findDesciptors() {
         for (Document document : documents) {
             for (ArrayList<String> pattern : listOfPatterns) {
                 ArrayList<Descriptor> descriptors = findByPattern(document, pattern);

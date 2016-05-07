@@ -5,16 +5,18 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import moss.datamining.bon.BagOfNounPhrases;
 import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
+
+import static moss.datamining.bon.BagOfNounPhrases.*;
+import static moss.datamining.bon.Data.*;
 
 public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
-    public static void saveDescriptors(ArrayList<Document> documents) {
+    public static void saveDescriptors() {
         for (Document document : documents) {
             String fileName = document.getName();
             ArrayList<Descriptor> descriptors = document.getDescriptors();
@@ -31,9 +33,9 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
-    public static void saveDescriptors() {
+    public static void saveDataDescriptors() {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\bon\\" + "descriptors.txt"))) {
-            for (DataDescriptor dataDescriptor : BagOfNounPhrases.dataDescriptors) {
+            for (DataDescriptor dataDescriptor : dataDescriptors) {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "
                         + dataDescriptor.getDataNumber());
                 pw.println(line);

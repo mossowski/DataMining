@@ -1,15 +1,12 @@
 package moss.datamining.application;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import moss.datamining.model.Data;
-import moss.datamining.model.Document;
 
 import static moss.datamining.tagger.Tagger.*;
 import static moss.datamining.utility.FileWriter.*;
 import static moss.datamining.bon.BagOfNounPhrases.*;
 import static moss.datamining.bon.Pattern.*;
+import static moss.datamining.bon.Data.*;
 
 public class Application {
 
@@ -17,7 +14,6 @@ public class Application {
      * Runs application
      */
     public static void run() {
-        Data data = new Data();
         Scanner console = new Scanner(System.in);
 
         while (true) {
@@ -38,19 +34,16 @@ public class Application {
                     tagData();
                     break;
                 case 2:
-                    data.setDocuments(getData());
+                    getData();
                     break;
                 case 3:
-                    ArrayList<Document> documents = data.getDocuments();
-                    findDesciptors(documents);
-                    // fileWriter.saveDescriptors(documents);
+                    findDesciptors();
                     break;
                 case 4:
-                    documents = data.getDocuments();
-                    findDataDesciptors(documents);
+                    findDataDesciptors();
+                    saveDataDescriptors();
+                    addDataDesciptors();
                     saveDescriptors();
-                    addDataDesciptors(documents);
-                    saveDescriptors(documents);
                     break;
                 default:
                     break;

@@ -6,11 +6,13 @@ import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 
+import static moss.datamining.bon.Data.*;
+
 public class BagOfNounPhrases {
 
     public static ArrayList<DataDescriptor> dataDescriptors = new ArrayList<DataDescriptor>();
 
-    public static void findDataDesciptors(ArrayList<Document> documents) {
+    public static void findDataDesciptors() {
         for (Document document : documents) {
             ArrayList<Descriptor> descriptors = document.getDescriptors();
             for (Descriptor descriptor : descriptors) {
@@ -34,7 +36,7 @@ public class BagOfNounPhrases {
         }
     }
 
-    public static void addDataDesciptors(ArrayList<Document> documents) {
+    public static void addDataDesciptors() {
         for (Document document : documents) {
             ArrayList<Descriptor> descriptors = document.getDescriptors();
             for (DataDescriptor dataDescriptor : dataDescriptors) {
