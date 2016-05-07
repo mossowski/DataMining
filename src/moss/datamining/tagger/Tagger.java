@@ -76,7 +76,7 @@ public class Tagger {
                 System.out.println("Name : " + fileName);
                 System.out.println("Path : " + filePath + "\n");
                 Document document = new Document(loadData(filePath, STOPWORDS_PATH), fileName);
-                documents.add(document);
+                documents.put(document.getName(), document);
             }
         }
         System.out.println("---------------END OF LOADING---------------");

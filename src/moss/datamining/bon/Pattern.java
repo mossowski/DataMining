@@ -1,10 +1,12 @@
 package moss.datamining.bon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 import moss.datamining.model.Element;
+
 import static moss.datamining.bon.Data.*;
 
 public class Pattern {
@@ -36,9 +38,9 @@ public class Pattern {
      * @param data
      */
     public static void findDesciptors() {
-        for (Document document : documents) {
+        for (Document document : documents.values()) {
             for (ArrayList<String> pattern : listOfPatterns) {
-                ArrayList<Descriptor> descriptors = findByPattern(document, pattern);
+                HashMap<String, Descriptor> descriptors = findByPattern(document, pattern);
                 document.setDescriptors(descriptors);
             }
         }
@@ -52,9 +54,9 @@ public class Pattern {
      * @param pattern
      * @return ArrayList<String>
      */
-    public static ArrayList<Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
-        ArrayList<Descriptor> descriptors = document.getDescriptors();
-        ArrayList<Element> elements = document.getElements();
+    public static HashMap<String, Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
+        HashMap<String, Descriptor> descriptors = document.getDescriptors();
+        ArrayList <Element> elements = document.getElements();
         for (int i = 0; i < elements.size(); i++) {
             int k = 0;
             StringBuilder match = new StringBuilder();
@@ -73,19 +75,15 @@ public class Pattern {
                 }
             }
             if (k == pattern.size()) {
-                boolean isAdded = false;
                 Descriptor descriptor = new Descriptor(match.toString(), 1);
                 String name = descriptor.getName();
-                for (Descriptor desc : descriptors) {
-                    String descName = desc.getName();
-                    if (descName.equals(name)) {
-                        desc.increaseNumber();
-                        document.increaseOccurrenceNumber();
-                        isAdded = true;
-                    }
+                if (descriptors.containsKey(name)) {
+                    Descriptor desc = descriptors.get(name);
+                    desc.increaseNumber();
+                    document.increaseOccurrenceNumber();
                 }
-                if (!isAdded) {
-                    descriptors.add(descriptor);
+                else {
+                    descriptors.put(name, descriptor);
                     document.increaseOccurrenceNumber();
                 }
             }

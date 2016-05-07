@@ -25,7 +25,7 @@ public class FileReader {
     public static ArrayList<Element> loadData(String pathName, String stopwordsPathName) {
         File file = new File(pathName);
         ArrayList<String> stopwords = loadStopwords(stopwordsPathName);
-        ArrayList<Element> result = new ArrayList<>();
+        ArrayList<Element> result = new ArrayList<Element>();
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();

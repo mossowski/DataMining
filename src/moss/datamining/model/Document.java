@@ -1,6 +1,7 @@
 package moss.datamining.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author mossowsk
@@ -10,7 +11,7 @@ public class Document {
 
     private String name;
     private ArrayList<Element> elements;
-    private ArrayList<Descriptor> descriptors;
+    private HashMap<String, Descriptor> descriptors;
     private int occurrenceNumber;
 
     // --------------------------------------------------------------------------------
@@ -18,7 +19,7 @@ public class Document {
     public Document() {
         name = "";
         elements = new ArrayList<Element>();
-        descriptors = new ArrayList<Descriptor>();
+        descriptors = new HashMap<String, Descriptor>();
         occurrenceNumber = 0;
     }
 
@@ -27,7 +28,7 @@ public class Document {
     public Document(ArrayList<Element> elements, String name) {
         this.name = name;
         this.elements = elements;
-        descriptors = new ArrayList<Descriptor>();
+        descriptors = new HashMap<String, Descriptor>();
     }
 
     // --------------------------------------------------------------------------------
@@ -44,13 +45,13 @@ public class Document {
 
     // --------------------------------------------------------------------------------
 
-    public ArrayList<Descriptor> getDescriptors() {
+    public HashMap<String, Descriptor> getDescriptors() {
         return descriptors;
     }
 
     // --------------------------------------------------------------------------------
 
-    public void setDescriptors(ArrayList<Descriptor> descriptors) {
+    public void setDescriptors(HashMap<String, Descriptor> descriptors) {
         this.descriptors = descriptors;
     }
 
@@ -64,25 +65,6 @@ public class Document {
 
     public int increaseOccurrenceNumber() {
         return occurrenceNumber++;
-    }
-
-    // --------------------------------------------------------------------------------
-
-    /**
-     * Prints descriptors
-     */
-    public void printDescriptors() {
-        System.out.println("--------------------------------");
-        descriptors.forEach((e) -> System.out.println(e.getName()));
-    }
-
-    // --------------------------------------------------------------------------------
-
-    /**
-     * Prints document
-     */
-    public void printElements() {
-        elements.forEach((e) -> System.out.println(e.getWord() + " " + e.getPartOfSpeech()));
     }
 
 }
