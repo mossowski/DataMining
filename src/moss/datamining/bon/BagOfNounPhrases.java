@@ -45,5 +45,27 @@ public class BagOfNounPhrases {
             }
         }
     }
+    
+    // --------------------------------------------------------------------------------
+
+    public static void countWeight() {
+        for (Document document : documents.values()) {
+            HashMap<String, Descriptor> descriptors = document.getDescriptors();
+            for (Descriptor descriptor : descriptors.values()) {
+                int number = descriptor.getNumber();
+                if (number > 0) {
+                    // descriptor frequency
+                    double tf = (double)number / (double)document.getOccurrenceNumber();
+                    // number of documents
+                    double N = documents.size();
+                    // number of documents containing descriptor
+                    double df = dataDescriptors.get(descriptor.getName()).getDataNumber();
+                    // descriptor reverse frequency
+                    double idf = Math.log(N/df) / Math.log(10);
+                    descriptor.setWeight(1/tf * idf);
+                }
+            }
+        }
+    }
 
 }

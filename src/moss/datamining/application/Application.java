@@ -40,6 +40,7 @@ public class Application {
                     findDataDesciptors();
                     saveDataDescriptors();
                     addDataDesciptors();
+                    countWeight();
                     saveDescriptors();
                     long endTime = System.currentTimeMillis();
                     System.out.println("getData :" + (endTime - startTime));

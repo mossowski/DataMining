@@ -25,7 +25,7 @@ public class FileWriter {
             HashMap<String, Descriptor> descriptors = document.getDescriptors();
             try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\descriptors\\" + "desc_" + fileName))) {
                 for (Descriptor descriptor : descriptors.values()) {
-                    StringBuilder line = new StringBuilder(descriptor.getName() + " " + descriptor.getNumber());
+                    StringBuilder line = new StringBuilder(descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
                     pw.println(line);
                 }
             } catch (FileNotFoundException anException) {
