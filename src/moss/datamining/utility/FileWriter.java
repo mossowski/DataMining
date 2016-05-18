@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
-
+import java.util.Map;
+import java.util.TreeMap;
 
 import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
@@ -23,9 +24,11 @@ public class FileWriter {
         for (Document document : documents.values()) {
             String fileName = document.getName();
             HashMap<String, Descriptor> descriptors = document.getDescriptors();
-            try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\descriptors\\" + "desc_" + fileName))) {
-                for (Descriptor descriptor : descriptors.values()) {
-                    StringBuilder line = new StringBuilder(descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
+            Map<String, Descriptor> treeMap = new TreeMap<String, Descriptor>(descriptors);
+            try (PrintWriter pw = new PrintWriter(new FileOutputStream(DESCRIPTORS_DATA_PATH + "desc_" + fileName))) {
+                for (Descriptor descriptor : treeMap.values()) {
+                    StringBuilder line = new StringBuilder(
+                            descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
                     pw.println(line);
                 }
             } catch (FileNotFoundException anException) {
@@ -37,8 +40,9 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void saveDataDescriptors() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream("data\\bon\\" + "descriptors.txt"))) {
-            for (DataDescriptor dataDescriptor : dataDescriptors.values()) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_DATA_PATH + "descriptors.txt"))) {
+            Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
+            for (DataDescriptor dataDescriptor : treeMap.values()) {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "
                         + dataDescriptor.getDataNumber());
                 pw.println(line);
@@ -49,15 +53,14 @@ public class FileWriter {
     }
 
     // --------------------------------------------------------------------------------
-    
+
     public static void removeFiles() {
-        // removes all files in bon directory
-        File bonDirectory = new File(BON_DATA_PATH);
-        for (File file: bonDirectory.listFiles()) 
-            file.delete();
+        // removes descriptors file in bon directory
+        File descriptorsFile = new File(BON_DATA_PATH + "descriptors.txt");
+        descriptorsFile.delete();
         // removes all files in descriptors directory
         File descriptorsDirectory = new File(DESCRIPTORS_DATA_PATH);
-        for (File file: descriptorsDirectory.listFiles()) 
+        for (File file : descriptorsDirectory.listFiles())
             file.delete();
     }
 

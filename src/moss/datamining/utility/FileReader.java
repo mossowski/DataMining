@@ -69,4 +69,34 @@ public class FileReader {
         return result;
     }
 
+    // --------------------------------------------------------------------------------
+
+    /**
+     * Loads patterns from file
+     * 
+     * @param pathName
+     * @return
+     */
+    public static ArrayList<ArrayList<String>> loadPatterns(String pathName) {
+        File file = new File(pathName);
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        try (Scanner fileScanner = new Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                try (Scanner lineScanner = new Scanner(line)) {
+                    lineScanner.useDelimiter(" ");
+                    ArrayList<String> pattern = new ArrayList<String>();
+                    while (lineScanner.hasNext()) {
+                        String element = lineScanner.next();
+                        pattern.add(element);
+                    }
+                    result.add(pattern);
+                }
+            }
+        } catch (FileNotFoundException anException) {
+            System.out.println("File not found!" + anException);
+        }
+        return result;
+    }
+
 }

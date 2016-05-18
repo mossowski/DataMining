@@ -6,29 +6,15 @@ import java.util.HashMap;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 import moss.datamining.model.Element;
+import moss.datamining.utility.FileReader;
 
 import static moss.datamining.bon.Data.*;
+import static moss.datamining.utility.Settings.BON_DATA_PATH;;
+
 
 public class Pattern {
 
-    public static ArrayList<ArrayList<String>> listOfPatterns = init();
-
-    public static ArrayList<ArrayList<String>> init() {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        // TODO
-        ArrayList<String> p1 = new ArrayList<String>();
-        p1.add("JJ");
-        p1.add("NN");
-
-        ArrayList<String> p2 = new ArrayList<String>();
-        p2.add("NN");
-        p2.add("NN");
-
-        result.add(p1);
-        result.add(p2);
-
-        return result;
-    }
+    public static ArrayList<ArrayList<String>> listOfPatterns = FileReader.loadPatterns(BON_DATA_PATH + "pattern.txt");
 
     // --------------------------------------------------------------------------------
 
@@ -56,7 +42,7 @@ public class Pattern {
      */
     public static HashMap<String, Descriptor> findByPattern(Document document, ArrayList<String> pattern) {
         HashMap<String, Descriptor> descriptors = document.getDescriptors();
-        ArrayList <Element> elements = document.getElements();
+        ArrayList<Element> elements = document.getElements();
         for (int i = 0; i < elements.size(); i++) {
             int k = 0;
             StringBuilder match = new StringBuilder();
@@ -81,8 +67,7 @@ public class Pattern {
                     Descriptor desc = descriptors.get(name);
                     desc.increaseNumber();
                     document.increaseOccurrenceNumber();
-                }
-                else {
+                } else {
                     descriptors.put(name, descriptor);
                     document.increaseOccurrenceNumber();
                 }
