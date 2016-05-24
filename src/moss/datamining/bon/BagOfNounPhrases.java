@@ -61,7 +61,9 @@ public class BagOfNounPhrases {
                     double df = dataDescriptors.get(descriptor.getName()).getDataNumber();
                     // descriptor reverse frequency
                     double idf = Math.log(N / df) / Math.log(10);
-                    descriptor.setWeight(1 / tf * idf);
+                    double weight = 1 / tf * idf;
+                    weight = Math.round(weight * 100.0) / 100.0;
+                    descriptor.setWeight(weight);
                 }
             }
         }
