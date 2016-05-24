@@ -3,7 +3,6 @@ package moss.datamining.bon;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
 import moss.datamining.model.Element;
@@ -53,12 +52,15 @@ public class Pattern {
         HashMap<String, Descriptor> descriptors = document.getDescriptors();
         ArrayList<Element> elements = document.getElements();
         for (int i = 0; i < elements.size(); i++) {
-            int k = 0;
+            ArrayList<Integer> listOfUsedWords = new ArrayList<Integer>();
             StringBuilder match = new StringBuilder();
+            int k = 0;
             for (int j = i; j < elements.size(); j++) {
                 String pos = elements.get(j).getPartOfSpeech();
                 String word = elements.get(j).getWord();
-                if (k < pattern.size() && pos.equals(pattern.get(k))) {
+                boolean isUsed = elements.get(j).getIsUsed();
+                if (k < pattern.size() && pos.equals(pattern.get(k)) && !isUsed) {
+                    listOfUsedWords.add(j);
                     if (k == 0) {
                         match.append(word);
                     } else {
@@ -70,6 +72,7 @@ public class Pattern {
                 }
             }
             if (k == pattern.size()) {
+                // add descriptor
                 Descriptor descriptor = new Descriptor(match.toString(), 1);
                 String name = descriptor.getName();
                 if (descriptors.containsKey(name)) {
@@ -79,6 +82,10 @@ public class Pattern {
                 } else {
                     descriptors.put(name, descriptor);
                     document.increaseOccurrenceNumber();
+                }
+                // mark used words
+                for (Integer integer : listOfUsedWords) {
+                    elements.get(integer).setIsUsed(true);
                 }
             }
         }
