@@ -33,7 +33,8 @@ public class FileReader {
                     lineScanner.useDelimiter(" ");
                     while (lineScanner.hasNext()) {
                         // word partOfSpeech
-                        String word = lineScanner.next();
+                        String word = lineScanner.next().toUpperCase();
+                        word = word.trim().replaceAll("\\s+", " ");
                         String partOfSpeech = lineScanner.next();
                         if (!stopwords.contains(word)) {
                             Element element = new Element(word, partOfSpeech);

@@ -69,12 +69,7 @@ public class BagOfNounPhrases {
 
     // --------------------------------------------------------------------------------
 
-    public static int levenshteinDistance(String s, String t, boolean lowerCase) {
-
-        if (lowerCase) {
-            s = s.toLowerCase();
-            t = t.toLowerCase();
-        }
+    public static int levenshteinDistance(String s, String t) {
 
         if (s.equals(t))
             return 0;
