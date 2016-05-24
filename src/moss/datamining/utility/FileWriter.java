@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,6 +48,40 @@ public class FileWriter {
             for (DataDescriptor dataDescriptor : treeMap.values()) {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "
                         + dataDescriptor.getDataNumber());
+                pw.println(line);
+            }
+        } catch (FileNotFoundException anException) {
+            System.out.println("File not found!" + anException);
+        }
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public static void saveBagOfNounPhrases() {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_DATA_PATH + "bon.arff"))) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            pw.println("% 1. Title: Bag of Noun Phrases");
+            pw.println("%");
+            pw.println("% 2. Sources:");
+            pw.println("%      (a) Date: " + dateFormat.format(date));
+            pw.println("%");
+            pw.println("@RELATION bon\n");
+
+            Map<String, DataDescriptor> dataDescriptorsTreeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
+            for (DataDescriptor dataDescriptor : dataDescriptorsTreeMap.values()) {
+                StringBuilder line = new StringBuilder("@ATTRIBUTE " + dataDescriptor.getName() + " " + "NUMERIC");
+                pw.println(line);
+            }
+            pw.println("\n@DATA");
+            for (Document document : documents.values()) {
+                Map<String, Descriptor> descriptorsTreeMap = new TreeMap<String, Descriptor>(document.getDescriptors());
+                StringBuilder line = new StringBuilder();
+                for (Descriptor descriptor : descriptorsTreeMap.values()) {
+                    line.append(",");
+                    line.append(descriptor.getWeight());
+                }
+                line.deleteCharAt(0);
                 pw.println(line);
             }
         } catch (FileNotFoundException anException) {

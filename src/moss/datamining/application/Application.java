@@ -42,6 +42,7 @@ public class Application {
                     addDataDesciptors();
                     countWeight();
                     saveDescriptors();
+                    saveBagOfNounPhrases();
                     long endTime = System.currentTimeMillis();
                     System.out.println("getData :" + (endTime - startTime));
                     break;
