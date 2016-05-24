@@ -1,6 +1,7 @@
 package moss.datamining.bon;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import moss.datamining.model.Descriptor;
@@ -24,6 +25,14 @@ public class Pattern {
      * @param data
      */
     public static void findDesciptors() {
+
+        listOfPatterns.sort(new Comparator<ArrayList<String>>() {
+            @Override
+            public int compare(ArrayList<String> first, ArrayList<String> second) {
+                return Integer.compare(second.size(), first.size());
+            }
+        });
+
         for (Document document : documents.values()) {
             for (ArrayList<String> pattern : listOfPatterns) {
                 HashMap<String, Descriptor> descriptors = findByPattern(document, pattern);
