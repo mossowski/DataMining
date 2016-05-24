@@ -72,7 +72,7 @@ public class BagOfNounPhrases {
     public static int levenshteinDistance(String s, String t) {
 
         if (s.equals(t))
-            return 0;
+            return 100;
 
         // create two work vectors of integer distances
         int[] v0 = new int[t.length() + 1];
@@ -102,7 +102,11 @@ public class BagOfNounPhrases {
                 v0[j] = v1[j];
         }
 
-        return v1[t.length()];
+        double distance = v1[t.length()];
+        double maximumLength = Math.max(s.length(), t.length());
+        double percentageRatio = (1 - distance / maximumLength) * 100;
+        int result = (int) Math.round(percentageRatio);
+        return result;
     }
 
 }
