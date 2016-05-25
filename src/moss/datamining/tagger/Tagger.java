@@ -53,7 +53,7 @@ public class Tagger {
         int numberOfTaggedFiles = 0;
         while (numberOfFiles != numberOfTaggedFiles) {
             try {
-                numberOfTaggedFiles = (int) Files.list(Paths.get(TAGGED_DATA_PATH)).count();
+                numberOfTaggedFiles = (int) Files.list(Paths.get(TAGGED_PATH)).count();
             } catch (IOException anException) {
                 anException.printStackTrace();
             }
@@ -64,7 +64,7 @@ public class Tagger {
     // --------------------------------------------------------------------------------
 
     public static void getData() {
-        File folder = new File(TAGGED_DATA_PATH);
+        File folder = new File(TAGGED_PATH);
         File[] listOfFiles = folder.listFiles();
         int numberOfFiles = listOfFiles.length;
         System.out.println("------------------LOADING------------------");

@@ -9,12 +9,12 @@ import moss.datamining.model.Element;
 import moss.datamining.utility.FileReader;
 
 import static moss.datamining.bon.Data.*;
-import static moss.datamining.utility.Settings.BON_DATA_PATH;;
+import static moss.datamining.utility.Settings.*;
 
 
 public class Pattern {
 
-    public static ArrayList<ArrayList<String>> listOfPatterns = FileReader.loadPatterns(BON_DATA_PATH + "pattern.txt");
+    public static ArrayList<ArrayList<String>> listOfPatterns = FileReader.loadPatterns(BON_PATH + "pattern.txt");
 
     // --------------------------------------------------------------------------------
 
