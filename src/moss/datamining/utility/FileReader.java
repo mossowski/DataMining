@@ -36,7 +36,7 @@ public class FileReader {
                         String word = lineScanner.next().toUpperCase();
                         word = word.trim().replaceAll("\\s+", " ");
                         String partOfSpeech = lineScanner.next();
-                        if (!stopwords.contains(word)) {
+                        if (!stopwords.contains(word) && !word.contains("'") && !word.contains("_") && !word.contains("-")) {
                             Element element = new Element(word, partOfSpeech);
                             result.add(element);
                         }

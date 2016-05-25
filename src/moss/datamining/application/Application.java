@@ -36,6 +36,7 @@ public class Application {
                     cleanData();
                     removeFiles();
                     getData();
+                    saveDocuments();
                     findDesciptors();
                     findDataDesciptors();
                     saveDataDescriptors();

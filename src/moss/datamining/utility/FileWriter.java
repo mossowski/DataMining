@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +15,29 @@ import java.util.TreeMap;
 import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
+import moss.datamining.model.Element;
 
 import static moss.datamining.bon.Data.*;
-import static moss.datamining.utility.Settings.BON_DATA_PATH;
-import static moss.datamining.utility.Settings.DESCRIPTORS_DATA_PATH;
+import static moss.datamining.utility.Settings.*;
 
 public class FileWriter {
+
+    // --------------------------------------------------------------------------------
+
+    public static void saveDocuments() {
+        for (Document document : documents.values()) {
+            String fileName = document.getName();
+            ArrayList<Element> elements = document.getElements();
+            try (PrintWriter pw = new PrintWriter(new FileOutputStream(DOCUMENTS_PATH + "doc_" + fileName))) {
+                for (Element element : elements) {
+                    StringBuilder line = new StringBuilder(element.getWord() + " " + element.getPartOfSpeech());
+                    pw.println(line);
+                }
+            } catch (FileNotFoundException anException) {
+                System.out.println("File not found!" + anException);
+            }
+        }
+    }
 
     // --------------------------------------------------------------------------------
 
@@ -28,7 +46,7 @@ public class FileWriter {
             String fileName = document.getName();
             HashMap<String, Descriptor> descriptors = document.getDescriptors();
             Map<String, Descriptor> treeMap = new TreeMap<String, Descriptor>(descriptors);
-            try (PrintWriter pw = new PrintWriter(new FileOutputStream(DESCRIPTORS_DATA_PATH + "desc_" + fileName))) {
+            try (PrintWriter pw = new PrintWriter(new FileOutputStream(DESCRIPTORS_PATH + "desc_" + fileName))) {
                 for (Descriptor descriptor : treeMap.values()) {
                     StringBuilder line = new StringBuilder(
                             descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
@@ -43,7 +61,7 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void saveDataDescriptors() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_DATA_PATH + "descriptors.txt"))) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_PATH + "descriptors.txt"))) {
             Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
             for (DataDescriptor dataDescriptor : treeMap.values()) {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "
@@ -58,7 +76,7 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void saveBagOfNounPhrases() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_DATA_PATH + "bon.arff"))) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_PATH + "bon.arff"))) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             pw.println("% 1. Title: Bag of Noun Phrases");
@@ -70,7 +88,7 @@ public class FileWriter {
 
             Map<String, DataDescriptor> dataDescriptorsTreeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
             for (DataDescriptor dataDescriptor : dataDescriptorsTreeMap.values()) {
-                StringBuilder line = new StringBuilder("@ATTRIBUTE " + dataDescriptor.getName() + " " + "NUMERIC");
+                StringBuilder line = new StringBuilder("@ATTRIBUTE '" + dataDescriptor.getName() + "' NUMERIC");
                 pw.println(line);
             }
             pw.println("\n@DATA");
@@ -93,11 +111,15 @@ public class FileWriter {
 
     public static void removeFiles() {
         // removes descriptors file in bon directory
-        File descriptorsFile = new File(BON_DATA_PATH + "descriptors.txt");
+        File descriptorsFile = new File(BON_PATH + "descriptors.txt");
         descriptorsFile.delete();
         // removes all files in descriptors directory
-        File descriptorsDirectory = new File(DESCRIPTORS_DATA_PATH);
+        File descriptorsDirectory = new File(DESCRIPTORS_PATH);
         for (File file : descriptorsDirectory.listFiles())
+            file.delete();
+        // removes all files in documents directory
+        File documentsDirectory = new File(DOCUMENTS_PATH);
+        for (File file : documentsDirectory.listFiles())
             file.delete();
     }
 
