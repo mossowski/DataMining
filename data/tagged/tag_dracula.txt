@@ -30059,7 +30059,7 @@ gloom NN
 ending VBG
 in IN
 some DT
-fixed VBN
+fixed JJ
 idea NN
 which WDT
 I PRP
