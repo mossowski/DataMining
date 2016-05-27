@@ -15,3 +15,5 @@ data/descriptors/
 data/bon/
 data/tagged/*
 data/documents/*
+/target/
+.settings/*

@@ -1,12 +1,12 @@
-package moss.datamining.application;
+package com.moss.datamining.application;
 
 import java.util.Scanner;
 
-import static moss.datamining.tagger.Tagger.*;
-import static moss.datamining.utility.FileWriter.*;
-import static moss.datamining.bon.BagOfNounPhrases.*;
-import static moss.datamining.bon.Data.*;
-import static moss.datamining.bon.Pattern.*;
+import static com.moss.datamining.tagger.Tagger.*;
+import static com.moss.datamining.utility.FileWriter.*;
+import static com.moss.datamining.bon.BagOfNounPhrases.*;
+import static com.moss.datamining.bon.Data.*;
+import static com.moss.datamining.bon.Pattern.*;
 
 public class Application {
 

@@ -1,15 +1,15 @@
-package moss.datamining.model;
+package com.moss.datamining.model;
 
-public class Descriptor {
+public class DataDescriptor {
 
     private String name;
     private int number;
-    private double weight;
+    private int dataNumber;
 
-    public Descriptor(String name, int number) {
+    public DataDescriptor(String name, int number) {
         this.name = name;
         this.number = number;
-        this.weight = 0;
+        this.dataNumber = 1;
     }
 
     // --------------------------------------------------------------------------------
@@ -32,20 +32,15 @@ public class Descriptor {
 
     // --------------------------------------------------------------------------------
 
-    public void increaseNumber() {
-        this.number++;
+    public int getDataNumber() {
+        return dataNumber;
     }
 
     // --------------------------------------------------------------------------------
 
-    public double getWeight() {
-        return weight;
-    }
-
-    // --------------------------------------------------------------------------------
-
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void increaseDataNumber() {
+        this.dataNumber++;
     }
 
 }
+

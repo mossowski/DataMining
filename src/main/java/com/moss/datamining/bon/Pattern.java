@@ -1,15 +1,15 @@
-package moss.datamining.bon;
+package com.moss.datamining.bon;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import moss.datamining.model.Descriptor;
-import moss.datamining.model.Document;
-import moss.datamining.model.Element;
-import moss.datamining.utility.FileReader;
+import com.moss.datamining.model.Descriptor;
+import com.moss.datamining.model.Document;
+import com.moss.datamining.model.Element;
+import com.moss.datamining.utility.FileReader;
 
-import static moss.datamining.bon.Data.*;
-import static moss.datamining.utility.Settings.*;
+import static com.moss.datamining.bon.Data.*;
+import static com.moss.datamining.utility.Settings.*;
 
 
 public class Pattern {

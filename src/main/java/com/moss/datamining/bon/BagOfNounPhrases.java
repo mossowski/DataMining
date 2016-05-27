@@ -1,4 +1,4 @@
-package moss.datamining.bon;
+package com.moss.datamining.bon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
-import moss.datamining.model.DataDescriptor;
-import moss.datamining.model.Descriptor;
-import moss.datamining.model.Document;
+import com.moss.datamining.model.DataDescriptor;
+import com.moss.datamining.model.Descriptor;
+import com.moss.datamining.model.Document;
 
-import static moss.datamining.bon.Data.*;
+import static com.moss.datamining.bon.Data.*;
 
 public class BagOfNounPhrases {
 

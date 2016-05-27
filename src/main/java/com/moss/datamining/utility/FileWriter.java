@@ -1,4 +1,4 @@
-package moss.datamining.utility;
+package com.moss.datamining.utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import moss.datamining.bon.BagOfNounPhrases;
-import moss.datamining.model.DataDescriptor;
-import moss.datamining.model.Descriptor;
-import moss.datamining.model.Document;
-import moss.datamining.model.Element;
+import com.moss.datamining.bon.BagOfNounPhrases;
+import com.moss.datamining.model.DataDescriptor;
+import com.moss.datamining.model.Descriptor;
+import com.moss.datamining.model.Document;
+import com.moss.datamining.model.Element;
 
-import static moss.datamining.bon.Data.*;
-import static moss.datamining.utility.Settings.*;
+import static com.moss.datamining.bon.Data.*;
+import static com.moss.datamining.utility.Settings.*;
 
 public class FileWriter {
 

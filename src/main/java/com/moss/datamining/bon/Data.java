@@ -1,9 +1,9 @@
-package moss.datamining.bon;
+package com.moss.datamining.bon;
 
 import java.util.HashMap;
 
-import moss.datamining.model.DataDescriptor;
-import moss.datamining.model.Document;
+import com.moss.datamining.model.DataDescriptor;
+import com.moss.datamining.model.Document;
 
 public class Data {
 

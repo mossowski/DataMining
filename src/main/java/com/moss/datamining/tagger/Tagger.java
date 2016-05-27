@@ -1,14 +1,14 @@
-package moss.datamining.tagger;
+package com.moss.datamining.tagger;
 
 import java.io.File;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import moss.datamining.model.Document;
-import static moss.datamining.utility.Settings.*;
-import static moss.datamining.utility.FileReader.*;
-import static moss.datamining.bon.Data.*;
+import com.moss.datamining.model.Document;
+import static com.moss.datamining.utility.Settings.*;
+import static com.moss.datamining.utility.FileReader.*;
+import static com.moss.datamining.bon.Data.*;
 
 /**
  * @author mossowsk

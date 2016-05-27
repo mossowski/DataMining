@@ -1,11 +1,11 @@
-package moss.datamining.utility;
+package com.moss.datamining.utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import moss.datamining.model.Element;
+import com.moss.datamining.model.Element;
 
 /**
  * @author mossowsk

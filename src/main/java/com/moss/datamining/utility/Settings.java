@@ -1,4 +1,4 @@
-package moss.datamining.utility;
+package com.moss.datamining.utility;
 
 public class Settings {
 

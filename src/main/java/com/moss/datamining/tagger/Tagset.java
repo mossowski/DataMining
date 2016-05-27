@@ -1,4 +1,4 @@
-package moss.datamining.tagger;
+package com.moss.datamining.tagger;
 
 /**
  * @author mossowsk
