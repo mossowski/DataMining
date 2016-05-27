@@ -38,7 +38,7 @@ public class Tagger {
     public static void tagData() {
         File folder = new File(DATA_PATH);
         File[] listOfFiles = folder.listFiles();
-        int numberOfFiles = listOfFiles.length - 3;
+        int numberOfFiles = listOfFiles.length - 4;
         System.out.println("------------------TAGGING------------------");
         System.out.println("Number of files : " + numberOfFiles + "\n");
         for (File file : listOfFiles) {
