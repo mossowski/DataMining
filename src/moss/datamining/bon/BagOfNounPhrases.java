@@ -1,6 +1,9 @@
 package moss.datamining.bon;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 
 import moss.datamining.model.DataDescriptor;
@@ -28,6 +31,29 @@ public class BagOfNounPhrases {
                 }
             }
         }
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public static ArrayList<String> findSimilarPhrases() {
+        ArrayList<String> similarPhrases = new ArrayList<String>();
+        ArrayList<DataDescriptor> descriptorsList = new ArrayList<DataDescriptor>();
+        Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
+        for (DataDescriptor dataDescriptor : treeMap.values()) {
+            descriptorsList.add(dataDescriptor);
+        }
+        
+        for (int i = 0; i < descriptorsList.size(); i++) {
+            String currentDescriptor = descriptorsList.get(i).getName();
+            for (int j = i + 1; j < descriptorsList.size(); j++) {
+                String descriptor = descriptorsList.get(j).getName();
+                int similarity = levenshteinDistance(currentDescriptor, descriptor);
+                if (similarity > 50) {
+                    similarPhrases.add(currentDescriptor + " ::: " + descriptor);
+                }
+            } 
+        }
+        return similarPhrases;
     }
 
     // --------------------------------------------------------------------------------

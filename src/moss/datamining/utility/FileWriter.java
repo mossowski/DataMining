@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import moss.datamining.bon.BagOfNounPhrases;
 import moss.datamining.model.DataDescriptor;
 import moss.datamining.model.Descriptor;
 import moss.datamining.model.Document;
@@ -60,12 +61,25 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
+    public static void saveSimilarPhrases() {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(SIMILAR_PATH))) {
+            ArrayList<String> similarPhrases = BagOfNounPhrases.findSimilarPhrases();
+            for (String similarPhrase : similarPhrases) {
+                StringBuilder line = new StringBuilder(similarPhrase);
+                pw.println(line);
+            }
+        } catch (FileNotFoundException anException) {
+            System.out.println("File not found!" + anException);
+        }
+    }
+
+    // --------------------------------------------------------------------------------
+
     public static void saveDataDescriptors() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_PATH + "descriptors.txt"))) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ALL_DESCRIPTORS_PATH))) {
             Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
             for (DataDescriptor dataDescriptor : treeMap.values()) {
-                StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " "
-                        + dataDescriptor.getDataNumber());
+                StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " " + dataDescriptor.getDataNumber());
                 pw.println(line);
             }
         } catch (FileNotFoundException anException) {
@@ -76,7 +90,7 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void saveBagOfNounPhrases() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(BON_PATH + "bon.arff"))) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_PATH))) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             pw.println("% 1. Title: Bag of Noun Phrases");
@@ -110,9 +124,15 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void removeFiles() {
-        // removes descriptors file in bon directory
-        File descriptorsFile = new File(BON_PATH + "descriptors.txt");
+        // removes descriptors.txt file in bon directory
+        File descriptorsFile = new File(ALL_DESCRIPTORS_PATH);
         descriptorsFile.delete();
+        // removes bon.arff file in bon directory
+        File arffFile = new File(ARFF_PATH);
+        arffFile.delete();
+        // removes similar.txt file in bon directory
+        File similarFile = new File(SIMILAR_PATH);
+        similarFile.delete();
         // removes all files in descriptors directory
         File descriptorsDirectory = new File(DESCRIPTORS_PATH);
         for (File file : descriptorsDirectory.listFiles())
