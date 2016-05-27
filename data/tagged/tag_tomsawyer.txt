@@ -60962,7 +60962,7 @@ lurked VBD
 in IN
 the DT
 murky NN
-nooks NNS
+nooks NN
 , ,
 the DT
 deep JJ
