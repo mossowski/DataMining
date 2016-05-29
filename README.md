@@ -5,7 +5,7 @@ Requirements :
 ## Java
 version 1.8 64bit [Download] (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-## Pyhton
+## Python
 version 3.5.1 32bit [Download] (https://www.python.org/downloads/windows/)
 
 ## NLTK
