@@ -82,6 +82,10 @@ public class Application {
                     saveBagOfNounPhrases();
                     currentTime = System.currentTimeMillis();
                     System.out.println("saveBagOfNounPhrases :" + (currentTime - previousTime));
+                    previousTime = currentTime;
+                    saveBagOfWords();
+                    currentTime = System.currentTimeMillis();
+                    System.out.println("saveBagOfWords       :" + (currentTime - previousTime));
                     long endTime = System.currentTimeMillis();
                     System.out.println("All                  :" + (endTime - startTime));
                     break;

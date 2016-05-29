@@ -9,10 +9,12 @@ public class Settings {
     public final static String TAGGED_PATH = DATA_PATH + "tagged\\";
     public final static String DESCRIPTORS_PATH = DATA_PATH + "descriptors\\";
     public final static String DOCUMENTS_PATH = DATA_PATH + "documents\\";
+    public final static String BOW_PATH = DATA_PATH + "bow\\";
     public final static String BON_PATH = DATA_PATH + "bon\\";
     public final static String PATTERN_PATH = BON_PATH + "pattern.txt";
     public final static String SIMILAR_PATH = BON_PATH + "similar.txt";
     public final static String ALL_DESCRIPTORS_PATH = BON_PATH + "descriptors.txt";
-    public final static String ARFF_PATH = BON_PATH + "bon.arff";
+    public final static String ARFF_BON_PATH = BON_PATH + "bon.arff";
+    public final static String ARFF_BOW_PATH = BOW_PATH + "bow.arff";
 
 }

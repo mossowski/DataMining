@@ -49,8 +49,7 @@ public class FileWriter {
             Map<String, Descriptor> treeMap = new TreeMap<String, Descriptor>(descriptors);
             try (PrintWriter pw = new PrintWriter(new FileOutputStream(DESCRIPTORS_PATH + "desc_" + fileName))) {
                 for (Descriptor descriptor : treeMap.values()) {
-                    StringBuilder line = new StringBuilder(
-                            descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
+                    StringBuilder line = new StringBuilder(descriptor.getName() + " " + descriptor.getNumber() + " " + descriptor.getWeight());
                     pw.println(line);
                 }
             } catch (FileNotFoundException anException) {
@@ -90,7 +89,7 @@ public class FileWriter {
     // --------------------------------------------------------------------------------
 
     public static void saveBagOfNounPhrases() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_PATH))) {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_BON_PATH))) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             pw.println("% 1. Title: Bag of Noun Phrases");
@@ -123,13 +122,45 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
+    public static void saveBagOfWords() {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_BOW_PATH))) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            pw.println("% 1. Title: Bag of Words");
+            pw.println("%");
+            pw.println("% 2. Sources:");
+            pw.println("%      (a) Date: " + dateFormat.format(date));
+            pw.println("%");
+            pw.println("@RELATION bow\n");
+            pw.println("@ATTRIBUTE content STRING\n");
+            pw.println("\n@DATA");
+
+            for (Document document : documents.values()) {
+                ArrayList<Element> elements = document.getElements();
+                StringBuilder line = new StringBuilder("'");
+                for (Element element : elements) {
+                    line.append(element.getWord() + " ");
+                }
+                line.append("'");
+                pw.println(line);
+            }
+        } catch (FileNotFoundException anException) {
+            System.out.println("File not found!" + anException);
+        }
+    }
+
+    // --------------------------------------------------------------------------------
+
     public static void removeFiles() {
         // removes descriptors.txt file in bon directory
         File descriptorsFile = new File(ALL_DESCRIPTORS_PATH);
         descriptorsFile.delete();
         // removes bon.arff file in bon directory
-        File arffFile = new File(ARFF_PATH);
-        arffFile.delete();
+        File arffBonFile = new File(ARFF_BON_PATH);
+        arffBonFile.delete();
+        // removes bow.arff file in bow directory
+        File arffBowFile = new File(ARFF_BOW_PATH);
+        arffBowFile.delete();
         // removes similar.txt file in bon directory
         File similarFile = new File(SIMILAR_PATH);
         similarFile.delete();

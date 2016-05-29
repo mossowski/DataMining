@@ -42,7 +42,7 @@ public class BagOfNounPhrases {
         for (DataDescriptor dataDescriptor : treeMap.values()) {
             descriptorsList.add(dataDescriptor);
         }
-        
+
         for (int i = 0; i < descriptorsList.size(); i++) {
             String currentDescriptor = descriptorsList.get(i).getName();
             for (int j = i + 1; j < descriptorsList.size(); j++) {
@@ -51,7 +51,7 @@ public class BagOfNounPhrases {
                 if (similarity > 50) {
                     similarPhrases.add(currentDescriptor + " ::: " + descriptor);
                 }
-            } 
+            }
         }
         return similarPhrases;
     }
