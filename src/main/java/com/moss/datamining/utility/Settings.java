@@ -17,4 +17,7 @@ public class Settings {
     public final static String ARFF_BON_PATH = BON_PATH + "bon.arff";
     public final static String ARFF_BOW_PATH = BOW_PATH + "bow.arff";
 
+    // application variables
+    public final static int SIMILARITY = 50;
+
 }

@@ -11,6 +11,7 @@ import com.moss.datamining.model.Descriptor;
 import com.moss.datamining.model.Document;
 
 import static com.moss.datamining.bon.Data.*;
+import static com.moss.datamining.utility.Settings.*;
 
 public class BagOfNounPhrases {
 
@@ -48,7 +49,7 @@ public class BagOfNounPhrases {
             for (int j = i + 1; j < descriptorsList.size(); j++) {
                 String descriptor = descriptorsList.get(j).getName();
                 int similarity = levenshteinDistance(currentDescriptor, descriptor);
-                if (similarity > 50) {
+                if (similarity > SIMILARITY) {
                     similarPhrases.add(currentDescriptor + " ::: " + descriptor);
                 }
             }

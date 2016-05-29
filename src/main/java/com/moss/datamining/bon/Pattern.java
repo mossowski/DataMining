@@ -14,7 +14,7 @@ import static com.moss.datamining.utility.Settings.*;
 
 public class Pattern {
 
-    public static ArrayList<ArrayList<String>> listOfPatterns = FileReader.loadPatterns(BON_PATH + "pattern.txt");
+    public static ArrayList<ArrayList<String>> listOfPatterns = FileReader.loadPatterns(PATTERN_PATH);
 
     // --------------------------------------------------------------------------------
 
