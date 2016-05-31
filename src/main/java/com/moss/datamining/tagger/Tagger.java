@@ -1,7 +1,7 @@
 package com.moss.datamining.tagger;
 
 import java.io.File;
-
+import java.io.FileFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -37,8 +37,13 @@ public class Tagger {
 
     public static void tagData() {
         File folder = new File(DATA_PATH);
-        File[] listOfFiles = folder.listFiles();
-        int numberOfFiles = listOfFiles.length - 4;
+        File[] listOfFiles = folder.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File f) {
+                return f.isFile();
+            }
+        });
+        int numberOfFiles = listOfFiles.length;
         System.out.println("------------------TAGGING------------------");
         System.out.println("Number of files : " + numberOfFiles + "\n");
         for (File file : listOfFiles) {

@@ -18,8 +18,9 @@ public class Application {
 
         while (true) {
             System.out.println("0. Exit");
-            System.out.println("1. Execute tagger");
-            System.out.println("2. Load documents");
+            System.out.println("1. Clean data");
+            System.out.println("2. Execute tagger");
+            System.out.println("3. Load documents");
 
             int choice = console.nextInt();
 
@@ -29,9 +30,13 @@ public class Application {
                     System.exit(0);
                     break;
                 case 1:
-                    tagData();
+                    cleanData();
+                    removeFiles();
                     break;
                 case 2:
+                    // tagData();
+                    break;
+                case 3:
                     long startTime = System.currentTimeMillis();
                     long previousTime = System.currentTimeMillis();
                     long currentTime;
