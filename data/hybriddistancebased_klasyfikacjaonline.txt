@@ -1,0 +1,3 @@
+The paper combines distance-based weak classifiers constructed using kernel fuzzy clustering technique with the naive Bayes algorithm. Resulting hybrid online  ensemble is validated through computational experiment involving a number of datasets often used for testing data streams mining algorithms.
+
+online learning,  kernel based fuzzy clustering

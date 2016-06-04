@@ -1,0 +1,59 @@
+We consider shuffle languages which are an extension of regular languages
+with two operators,
+that is shuffle (sometimes called interleaving ) and shuffle closure.
+The class of shuffle languages is a proper subset of context sensitive
+languages, incomparable with context - free ones.
+For this class we give two undecidability results. First of all we show
+that the intersection emptiness problem for shuffle languages is
+undecidable and then we prove that there is no algorithm to determine the
+shuffle closure height of shuffle expressions.
+
+The operations shuffle and shuffle closure were introduced
+to describe concurrencies, synchronization and cyclic actions.
+Together with other operations they describe various classes of languages
+ which have been extensively studied (see \cite{Jantzen1}, \cite{Jantzen2},
+\cite{JJ1}, \cite{JJ2}).
+It is well known (see \cite{Hop}) that the class of regular languages is
+closed under shuffle operation. On the other hand, if both operations of shuffle
+and shuffle iteration are added to regular operations, i.e sum, concatenation
+and Kleene closure we obtain the class of shuffle languages SL. This class is
+contained in the class of context-sensitive languages and incomparable with either
+context-free languages or Petri net languages. On the other hand, if regular
+expressions are extended by four operators: shuffle, shuffle closure,
+synchronous composition and renaming (with no shuffle closure nested),
+then they generate precisely Petri net languages, as was shown in \cite{Garg}.
+
+As far as decidability questions for shuffle languages are concerned, at first
+it was proved (\cite{NN}) that the equality problem for shuffle languages is
+undecidable, and then (\cite{Kaz}) the undecidability of the universe
+problem, that is whether $L=\Sigma ^\ast$, where $L$ is a language and $\Sigma $
+an alphabet. Of course the former result follows from the latter.
+
+Here we consider two other problems.
+We start with the intersection emptiness problem.
+There is one commonly used technique to prove the undecidability of the above
+problem. For example for the class of context-free languages it is shown that
+for any Turing machine M there exist two context-free languages such that their
+intersection is precisely the set of valid computations of M (\cite{Hop}). Thus
+from the undecidability of the Turing machine halting problem the result
+follows. For the case of shuffle langugages we are going to use two counter
+automata instead.We show that there exists a shuffle language L
+such that for a given two counter automaton $A$ one can effectively construct
+a shuffle language $L_A$
+so that $L\cap L_A$ consists of words corresponding to succesful computations
+of A when started with both counters empty.
+The proof uses the ideas of \cite{Aa}.
+
+For regular expressions the idea of (Kleene) star height was introduced in
+(\cite{Eg}) and Hashiguchi in \cite{Has} presented the algorithm for determining
+the star height of any regular language. For shuffle expressions we introduce
+the shuffle closure height and prove, in contrast to the above mentioned result,
+that there is no algorithm to determine shuffle closure height.
+
+The paper is organized as follows. In section 2 we set up notation, in
+particular introduce the concept of shuffle closure height of expressions and
+illustrate it by a few examples. In section 3 we prove that the intersection
+emptiness problem for shuffle expressions is undecidable. Section 4 is devoted
+to the undecidability of shuffle closure height of expressions. Since the
+proof relies on results presented in \cite{Kaz} and \cite{JJ3} we repeat the
+relevant material to make the paper self contained.

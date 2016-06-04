@@ -1,0 +1,24 @@
+In this paper we consider the hierarchy of languages which originates from the dot hierarchy (also called Brzozowski's hierarchy)
+by replacing the operation of concatenation by the shuffle operation. It is proved that there are only two levels in this hierarchy, contrary to the dot hierarchy which is infinite (\cite{brzo:knas}).
+
+The dot hierarchy, introduced by Brzozowski, is the result of the following operations: 
+given a finite alphabet $\Sigma$ one starts with the family of one
+word languages of type $\{a\}$, for any $a\in\Sigma$ or $\{\lambda\}$, $\lambda$ - the empty word. Closing this family under Boolean operations one 
+obtains the level $0$ of the hierarchy. 
+Each next level of the hierarchy is obtained via the closure of the previous level under concatenation and then again 
+under Boolean operations. The union of all the these levels is the family of star-free or aperiodic languages, a proper subclass of regular languages.
+In \cite{brzo:knas} it was shown that the dot hierarchy is infinite for any alphabet of two or more letters and is finite in case of one letter alphabet.
+Here we consider a hierarchy which arises from the above one by replacing the concatenation by the shuffle operation. The shuffle of two words
+is the set of all possible interleavings of the subwords of the words like shuffling two decks of cards.. In particular, the shuffle of two words contains 
+their both concatenations. Since regular languages are closed under shuffle (\cite{hopc}), languages in this hierarchy are regular, as well. It appears
+that the hierarchy is finite for any alphabet. This is in contrast with the results of \cite{jedr} where it was shown that the hierarchy with both shuffle 
+and shuffle closure, is infinite. The collapse of the hierarchy is not surprising in view of the results of \cite{jedr:szep} 
+where the following problem was investigated - how does the
+introduction of the Boolean operator of intersection changes the expressive power of shuffle languages.
+\\
+The paper is organized as follows. In Preliminaries we remind some useful definitions and define the hierarchy. 
+In Section \ref{deco} we introduce the notion of a shuffle decomposition.
+Following the methods of \cite{brzo:knas}
+we establish, in Section \ref{repr} some general results on the levels $0$ and $1$ of the considered hierarchy. 
+These results are then used in the final Section  
+to establish the main result of the paper that the hierarchy collapses at level $1$ for any finite alphabet.

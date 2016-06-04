@@ -1,0 +1,69 @@
+We investigate the complexity of languages described by some expressions
+containing shuffle operator and intersection. We show that deciding whether
+the shuffle of two words has a nonempty intersection with a regular set
+(or fulfills some regular pattern) is NL-complete.
+
+Furthermore we show that the class of languages of the form  $L\cap R$,
+with a shuffle language $L$ and a regular language $R$,  contains
+non-semilinear languages and does not form a family of mildly
+context-sensitive languages.
+
+formal languages, shuffle, space complexity
+
+Parallel composition of words appears to be an important issue both in the
+theory of concurrency and formal languages. Usually it is modeled by the
+shuffle operation. If the class of regular languages is extended by the
+shuffle operation $\odot$ and the iteration of the shuffle operation,
+$\otimes$, then we obtain the class of shuffle languages $SL$, which is useful
+in describing concurrent non-communicating processes \cite{Sh}.
+We know \cite{JS} that for each shuffle language $L$ there exists a one-way
+nondeterministic Turing machine which decides the membership problem for
+$L$ in logarithmic space. This implies that shuffle languages are
+context sensitive and that they are recognizable in
+polynomial time. But the shuffle operation can be helpful to describe more
+complex languages.
+Warmuth and Haussler \cite{War}   show that if we add the intersection operation
+then we can obtain an NP-complete language, namely the language
+ $\{\$a^nb^nc^nd^n \mid
+n\ge 0\}^\otimes = \big((\$ + abcd)^\otimes \cap (\$a^*b^*c^*d^*)\big)^\otimes$.
+They  also show that the problem of deciding for any words
+$w, w_1,\dots, w_n\in \{a,b,c\}^*$ whether
+$w\in w_1\odot \cdots\odot w_n$
+is NP-complete.
+
+In this paper we consider some languages described with the help of both the
+shuffle operations and the intersection with regular sets.
+Firstly, we consider languages of the form
+$\{u\$v\mid u\odot v\cap R\ne\emptyset\}$ or
+$\{u\$v\mid u\odot v\subset R\}$,
+where $R$ is a regular language.
+The latter is
+the problem of deciding whether the shuffle of two
+words fulfills the  regular pattern $R$.
+We show that every such language belongs to $NL$ (is acceptable in
+nondeterministic logarithmic space) and that there exists
+an $NL$-complete language of each of these forms.
+ We also show that there are $NL$-complete languages of the form
+$\{u\mid u\odot u\cap R\ne\emptyset\}$ or
+$\{u\mid u\odot u\subset R\}$.
+
+Furthermore we consider the class $SL\wedge Reg=
+\{L\cap R\mid \;L\in SL,\;R\in Reg\}$ of languages represented as the
+intersection of a shuffle language and a regular one. The reason for starting
+this investigation was, as it seemed, the connection of $SL\wedge Reg$ with
+mildly context-sensitive languages
+considered in \cite{MVM} and
+defined as follows:
+A family $\cal L$ is a mildly context-sensitive family of languages if
+each language in $\cal L$ is semilinear, and recognizable in
+deterministic polynomial time, and
+if $\cal L$ contains the following three  languages:
+multiple agreements, crossed agreements and duplications.
+The class $SL \wedge Reg$  seemed a good candidate for
+a family of mildly context-sensitive languages in view of fulfilling the
+condition of polynomial complexity of membership problem \cite{JS} and neat
+description of multiple agreements and crossed agreements by suitable
+expressions.
+In this paper we show that $SL \wedge Reg$ contains some non-semilinear
+languages and does not contain $L_3$. Hence $SL \wedge Reg$
+does not form a family of mildly context-sensitive languages.

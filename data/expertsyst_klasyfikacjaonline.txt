@@ -1,0 +1,10 @@
+Main impact of the paper is proposing a family of algorithms for the online learning and classification.
+These algorithms work in rounds, where at each round a new instance is given and the algorithm makes a prediction. After the true class of the instance is revealed, the learning algorithm updates its internal hypothesis. 
+The proposed algorithms are based on fuzzy C-means clustering and kernel-based fuzzy C-means clustering, followed by a calculation of distances between cluster centroids and the incoming instance for which  the class label is to be predicted. 
+In one of the proposed variants, simple distance-based classifiers thus obtained serve as basic classifiers for the implemented Rotation Forest ensemble classifier, which increases the accuracy of classification.
+ In the paper we also propose using kernelized fuzzy C-means clustering method as an alternative approach to constructing distance based online classifiers. 
+The approach allows to construct online classifiers of the polynomial computational complexity which is a significant feature considering potential application to the big data analysis.
+ Using the kernelized clustering is advantageous since it allows for automatic estimation of the number of clusters maintaining the number of the user-defined parameters.
+The proposed classification algorithms are validated experimentally. Experiment results show that the approach assures good quality of classification, extending the range of the available online approaches.
+
+Online Learning, Fuzzy C-means Clustering, Kernelized Clustering, Rotation Forest.
