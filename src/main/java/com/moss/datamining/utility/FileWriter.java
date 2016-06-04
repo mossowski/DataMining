@@ -78,7 +78,10 @@ public class FileWriter {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(ALL_DESCRIPTORS_PATH))) {
             Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
             for (DataDescriptor dataDescriptor : treeMap.values()) {
-                StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " " + dataDescriptor.getDataNumber());
+                StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " " + dataDescriptor.getDataNumber() + " POS : ");
+                for (String s : dataDescriptor.getPattern()) {
+                    line.append(s + " ");
+                }
                 pw.println(line);
             }
         } catch (FileNotFoundException anException) {

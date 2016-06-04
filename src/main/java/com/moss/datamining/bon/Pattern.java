@@ -73,7 +73,7 @@ public class Pattern {
             }
             if (k == pattern.size()) {
                 // add descriptor
-                Descriptor descriptor = new Descriptor(match.toString(), 1);
+                Descriptor descriptor = new Descriptor(match.toString(), 1, pattern);
                 String name = descriptor.getName();
                 if (descriptors.containsKey(name)) {
                     Descriptor desc = descriptors.get(name);

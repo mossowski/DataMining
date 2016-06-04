@@ -8,12 +8,14 @@ public class DataDescriptor {
     private int number;
     private int dataNumber;
     private ArrayList<String> files;
+    private ArrayList<String> pattern;
 
-    public DataDescriptor(String name, int number) {
+    public DataDescriptor(String name, int number, ArrayList<String> pattern) {
         this.name = name;
         this.number = number;
         this.dataNumber = 1;
         this.files = new ArrayList<String>();
+        this.setPattern(pattern);
     }
 
     // --------------------------------------------------------------------------------
@@ -50,6 +52,18 @@ public class DataDescriptor {
 
     public ArrayList<String> getFiles() {
         return files;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public ArrayList<String> getPattern() {
+        return pattern;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void setPattern(ArrayList<String> pattern) {
+        this.pattern = pattern;
     }
 
 }
