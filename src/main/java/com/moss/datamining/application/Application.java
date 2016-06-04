@@ -34,7 +34,7 @@ public class Application {
                     removeFiles();
                     break;
                 case 2:
-                    // tagData();
+                    tagData();
                     break;
                 case 3:
                     long startTime = System.currentTimeMillis();

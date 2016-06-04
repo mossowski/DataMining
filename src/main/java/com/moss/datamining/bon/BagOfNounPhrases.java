@@ -26,9 +26,11 @@ public class BagOfNounPhrases {
                     int number = descriptorNumber + dataDescriptor.getNumber();
                     dataDescriptor.setNumber(number);
                     dataDescriptor.increaseDataNumber();
+                    dataDescriptor.getFiles().add(document.getName());
                 } else {
                     DataDescriptor dataDescriptor = new DataDescriptor(descriptorName, descriptorNumber);
                     dataDescriptors.put(descriptorName, dataDescriptor);
+                    dataDescriptor.getFiles().add(document.getName());
                 }
             }
         }
@@ -50,7 +52,17 @@ public class BagOfNounPhrases {
                 String descriptor = descriptorsList.get(j).getName();
                 int similarity = levenshteinDistance(currentDescriptor, descriptor);
                 if (similarity > SIMILARITY) {
-                    similarPhrases.add(currentDescriptor + " ::: " + descriptor);
+                    ArrayList<String> currentDescriptorFiles = descriptorsList.get(i).getFiles();
+                    StringBuilder currentDescriptorFilesNames = new StringBuilder();
+                    for (String fileName : currentDescriptorFiles) {
+                        currentDescriptorFilesNames.append(fileName + " ");
+                    }
+                    ArrayList<String> descriptorFiles = descriptorsList.get(j).getFiles();
+                    StringBuilder descriptorFilesNames = new StringBuilder();
+                    for (String fileName : descriptorFiles) {
+                        descriptorFilesNames.append(fileName + " ");
+                    }
+                    similarPhrases.add(currentDescriptor + " :: " + descriptor + " ||| " + currentDescriptorFilesNames + " --- " + descriptorFilesNames);
                 }
             }
         }
