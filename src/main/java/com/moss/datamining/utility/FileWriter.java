@@ -139,7 +139,9 @@ public class FileWriter {
                 ArrayList<Element> elements = document.getElements();
                 StringBuilder line = new StringBuilder("'");
                 for (Element element : elements) {
-                    line.append(element.getWord() + " ");
+                    if (isValidPOS(element.getPartOfSpeech())) {
+                        line.append(element.getWord() + " ");
+                    }
                 }
                 line.append("'");
                 pw.println(line);
@@ -172,6 +174,24 @@ public class FileWriter {
         File documentsDirectory = new File(DOCUMENTS_PATH);
         for (File file : documentsDirectory.listFiles())
             file.delete();
+    }
+
+    // --------------------------------------------------------------------------------
+
+    /**
+     * Checks if part of speech is valid
+     * @param pos
+     * @return
+     */
+    public static boolean isValidPOS(String pos) {
+        String[] validPOS = {"NN", "NNS", "NNP", "NNPS", "JJ", "JJR", "JJS", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ"};
+        for (int i = 0; i < validPOS.length; i++) {
+            String currentPOS = validPOS[i];
+            if (pos.equals(currentPOS)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
