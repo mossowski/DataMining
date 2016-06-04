@@ -24,7 +24,7 @@ public class Pattern {
      * @param data
      */
     public static void findDesciptors() {
-
+        listOfPatterns = FileReader.loadPatterns(PATTERN_PATH);
         listOfPatterns.sort(new Comparator<ArrayList<String>>() {
             @Override
             public int compare(ArrayList<String> first, ArrayList<String> second) {
