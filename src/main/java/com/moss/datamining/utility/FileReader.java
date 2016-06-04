@@ -41,7 +41,7 @@ public class FileReader {
                             Element element = new Element(" ", " ");
                             result.add(element);
                         }
-                        else if (!stopwords.contains(word) && !word.contains("'") && !word.contains("_") && !word.contains("-")) {
+                        else if (!stopwords.contains(word) && isValidWord(word)) {
                             Element element = new Element(word, partOfSpeech);
                             result.add(element);
                         }
@@ -103,6 +103,24 @@ public class FileReader {
             System.out.println("File not found!" + anException);
         }
         return result;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    /**
+     * Checks if word does not contain any invalid characters
+     * @param word
+     * @return
+     */
+    public static boolean isValidWord(String word) {
+        String[] invalidCharacters = {",","'","_","!","?","\\","$","^","*","(",")"};
+        for (int i = 0; i < invalidCharacters.length; i++) {
+            String invalidCharacter = invalidCharacters[i];
+            if (word.contains(invalidCharacter)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
