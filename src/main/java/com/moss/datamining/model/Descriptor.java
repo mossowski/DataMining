@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class Descriptor {
 
     private String name;
+    private String uniqueName;
     private int number;
     private double weight;
     private ArrayList<String> pattern;
 
     public Descriptor(String name, int number, ArrayList<String> pattern) {
         this.name = name;
+        this.uniqueName = null;
         this.number = number;
         this.weight = 0;
         this.setPattern(pattern);
@@ -23,9 +25,9 @@ public class Descriptor {
     }
 
     // --------------------------------------------------------------------------------
-    
+
     public void setName(String name) {
-        this.name = name; 
+        this.name = name;
     }
 
     // --------------------------------------------------------------------------------
@@ -68,6 +70,18 @@ public class Descriptor {
 
     public void setPattern(ArrayList<String> pattern) {
         this.pattern = pattern;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public String getUniqueName() {
+        return uniqueName;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public void setUniqueName(String uniqueName) {
+        this.uniqueName = uniqueName;
     }
 
 }
