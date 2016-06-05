@@ -40,59 +40,83 @@ public class Application {
                     long startTime = System.currentTimeMillis();
                     long previousTime = System.currentTimeMillis();
                     long currentTime;
+
                     cleanData();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("cleanData            :" + (currentTime - previousTime));
+                    System.out.println("cleanData                :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     removeFiles();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("removeFiles          :" + (currentTime - previousTime));
+                    System.out.println("removeFiles              :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     getData();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("getData              :" + (currentTime - previousTime));
+                    System.out.println("getData                  :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     saveDocuments();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveDocuments        :" + (currentTime - previousTime));
+                    System.out.println("saveDocuments            :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     findDesciptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("findDesciptors       :" + (currentTime - previousTime));
+                    System.out.println("findDesciptors           :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     findDataDesciptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("findDataDesciptors   :" + (currentTime - previousTime));
+                    System.out.println("findDataDesciptors       :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     saveDataDescriptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveDataDescriptors  :" + (currentTime - previousTime));
+                    System.out.println("saveDataDescriptors      :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     addDataDesciptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("addDataDesciptors    :" + (currentTime - previousTime));
+                    System.out.println("addDataDesciptors        :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
-                    saveSimilarPhrases();
+                    saveSimilarDescriptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveSimilarPhrases   :" + (currentTime - previousTime));
+                    System.out.println("saveSimilarPhrases       :" + (currentTime - previousTime));
+
+                    previousTime = currentTime;
+                    countDataNumber();
+                    currentTime = System.currentTimeMillis();
+                    System.out.println("countDataNumber          :" + (currentTime - previousTime));
+
+                    previousTime = currentTime;
+                    saveFinalDataDescriptors();
+                    currentTime = System.currentTimeMillis();
+                    System.out.println("saveFinalDataDescriptors :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     countWeight();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("countWeight          :" + (currentTime - previousTime));
+                    System.out.println("countWeight              :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     saveDescriptors();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveDescriptors      :" + (currentTime - previousTime));
+                    System.out.println("saveDescriptors          :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     saveBagOfNounPhrases();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveBagOfNounPhrases :" + (currentTime - previousTime));
+                    System.out.println("saveBagOfNounPhrases     :" + (currentTime - previousTime));
+
                     previousTime = currentTime;
                     saveBagOfWords();
                     currentTime = System.currentTimeMillis();
-                    System.out.println("saveBagOfWords       :" + (currentTime - previousTime));
+                    System.out.println("saveBagOfWords           :" + (currentTime - previousTime));
+
                     long endTime = System.currentTimeMillis();
-                    System.out.println("All                  :" + (endTime - startTime));
+                    System.out.println("All                      :" + (endTime - startTime));
                     break;
                 default:
                     break;
