@@ -353,9 +353,8 @@ circulated VBN
 through IN
 this DT
 network NN
-by IN
 software NN
-agents NNS
+agent NN
 . .
 The DT
 number NN
@@ -433,7 +432,7 @@ and CC
 destruction NN
 ( (
 the DT
-elimination NN
+eliminations NNS
 of IN
 weak JJ
 results NNS

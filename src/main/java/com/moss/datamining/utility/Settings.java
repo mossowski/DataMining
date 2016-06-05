@@ -19,6 +19,6 @@ public class Settings {
     public final static String ARFF_BOW_PATH = BOW_PATH + "bow.arff";
 
     // application variables
-    public final static int SIMILARITY = 75;
+    public final static int SIMILARITY = 70;
 
 }

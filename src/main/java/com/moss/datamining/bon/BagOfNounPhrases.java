@@ -63,7 +63,22 @@ public class BagOfNounPhrases {
                             similarity = similar;
                         }
                     }
-                    if (similarity > SIMILARITY) {
+                    boolean isSamePattern = true;
+                    int currentDataDescriptorPatternSize = currentDataDescriptor.getPattern().size();
+                    int checkDataDescriptorPatternSize = checkDataDescriptor.getPattern().size();
+                    if (currentDataDescriptorPatternSize == checkDataDescriptorPatternSize) {
+                        for (int k = 0, l = 0; k < currentDataDescriptorPatternSize; k++, l++) {
+                            String currentDataPatternIndex = currentDataDescriptor.getPattern().get(k);
+                            String checkDataPatternIndex = checkDataDescriptor.getPattern().get(l);
+                            if (!currentDataPatternIndex.equals(checkDataPatternIndex)) {
+                                isSamePattern = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        isSamePattern = false;
+                    }
+                    if (similarity > SIMILARITY && isSamePattern) {
                         // print similarity
                         ArrayList<String> currentDescriptorFiles = currentDataDescriptor.getFiles();
                         StringBuilder currentDescriptorFilesNames = new StringBuilder();

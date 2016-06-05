@@ -31,7 +31,7 @@ class NN
 of IN
 the DT
 population-based JJ
-algorithms NN
+algorithms NNS
 . .
 One CD
 of IN
