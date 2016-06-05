@@ -60,11 +60,11 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
-    public static void saveSimilarPhrases() {
+    public static void saveSimilarDescriptors() {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(SIMILAR_PATH))) {
-            ArrayList<String> similarPhrases = BagOfNounPhrases.findSimilarPhrases();
-            for (String similarPhrase : similarPhrases) {
-                StringBuilder line = new StringBuilder(similarPhrase);
+            ArrayList<String> similarDescriptors = BagOfNounPhrases.findSimilarDescriptors();
+            for (String similarDescriptor : similarDescriptors) {
+                StringBuilder line = new StringBuilder(similarDescriptor);
                 pw.println(line);
             }
         } catch (FileNotFoundException anException) {
@@ -81,6 +81,27 @@ public class FileWriter {
                 StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " " + dataDescriptor.getDataNumber() + " POS : ");
                 for (String s : dataDescriptor.getPattern()) {
                     line.append(s + " ");
+                }
+                pw.println(line);
+            }
+        } catch (FileNotFoundException anException) {
+            System.out.println("File not found!" + anException);
+        }
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public static void saveFinalDataDescriptors() {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ALL_DESCRIPTORS_FINAL_PATH))) {
+            Map<String, DataDescriptor> treeMap = new TreeMap<String, DataDescriptor>(dataDescriptors);
+            for (DataDescriptor dataDescriptor : treeMap.values()) {
+                StringBuilder line = new StringBuilder(dataDescriptor.getName() + " " + dataDescriptor.getNumber() + " " + dataDescriptor.getDataNumber() + " Similar names : ");
+                for (String similarName : dataDescriptor.getSimilarNames()) {
+                    line.append(similarName + " - ");
+                }
+                line.append(" POS : ");
+                for (String pattern : dataDescriptor.getPattern()) {
+                    line.append(pattern + " ");
                 }
                 pw.println(line);
             }

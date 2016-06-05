@@ -14,10 +14,11 @@ public class Settings {
     public final static String PATTERN_PATH = BON_PATH + "pattern.txt";
     public final static String SIMILAR_PATH = BON_PATH + "similar.txt";
     public final static String ALL_DESCRIPTORS_PATH = BON_PATH + "descriptors.txt";
+    public final static String ALL_DESCRIPTORS_FINAL_PATH = BON_PATH + "descriptorsFinal.txt";
     public final static String ARFF_BON_PATH = BON_PATH + "bon.arff";
     public final static String ARFF_BOW_PATH = BOW_PATH + "bow.arff";
 
     // application variables
-    public final static int SIMILARITY = 50;
+    public final static int SIMILARITY = 75;
 
 }
