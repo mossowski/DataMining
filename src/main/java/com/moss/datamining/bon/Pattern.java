@@ -34,8 +34,10 @@ public class Pattern {
 
         for (Document document : documents.values()) {
             for (ArrayList<String> pattern : listOfPatterns) {
-                HashMap<String, Descriptor> descriptors = findByPattern(document, pattern);
-                document.setDescriptors(descriptors);
+                if (isValidPattern(pattern)) {
+                    HashMap<String, Descriptor> descriptors = findByPattern(document, pattern);
+                    document.setDescriptors(descriptors);
+                }
             }
         }
     }
@@ -90,6 +92,30 @@ public class Pattern {
             }
         }
         return descriptors;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public static boolean isValidPattern(ArrayList<String> pattern) {
+        boolean isValid = false;
+        for (String element : pattern) {
+            if (isNoun(element)) {
+                isValid = true;
+            }
+        }
+        return isValid;
+    }
+
+    // --------------------------------------------------------------------------------
+
+    public static boolean isNoun(String element) {
+        boolean isNoun = false;
+        for (RequiredPartOfSpeech pos : RequiredPartOfSpeech.values()) {
+            if (element.equals(pos.toString())) {
+                isNoun = true;
+            }
+        }
+        return isNoun;
     }
 
 }

@@ -21,4 +21,8 @@ public class Settings {
     // application variables
     public final static int SIMILARITY = 70;
 
+    public enum RequiredPartOfSpeech {
+        NN, NNS, NNP, NNPS
+    }
+
 }
