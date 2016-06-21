@@ -136,7 +136,8 @@ public class FileWriter {
                     line.append(",");
                     line.append(descriptor.getWeight());
                 }
-                line.deleteCharAt(0);
+                if (line.length() > 0)
+                    line.deleteCharAt(0);
                 pw.println(line);
             }
         } catch (FileNotFoundException anException) {
@@ -204,6 +205,7 @@ public class FileWriter {
 
     /**
      * Checks if part of speech is valid
+     * 
      * @param pos
      * @return
      */

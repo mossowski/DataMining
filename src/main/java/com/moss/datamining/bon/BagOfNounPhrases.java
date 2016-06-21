@@ -29,8 +29,7 @@ public class BagOfNounPhrases {
                     // dataDescriptor.increaseDataNumber();
                     dataDescriptor.getFiles().add(document.getName());
                 } else {
-                    DataDescriptor dataDescriptor =
-                            new DataDescriptor(descriptorName, descriptorNumber, descriptorPattern);
+                    DataDescriptor dataDescriptor = new DataDescriptor(descriptorName, descriptorNumber, descriptorPattern);
                     dataDescriptors.put(descriptorName, dataDescriptor);
                     dataDescriptor.getFiles().add(document.getName());
                 }
@@ -99,8 +98,7 @@ public class BagOfNounPhrases {
                             longerDescriptor = checkDataDescriptorName;
                         }
                         // print similar descriptors
-                        similarPhrases.add(currentDataDescriptorName + " ---> " + checkDataDescriptorName + " ||| "
-                                + currentDescriptorFilesNames + " --- " + descriptorFilesNames);
+                        similarPhrases.add(currentDataDescriptorName + " ---> " + checkDataDescriptorName + " ||| " + currentDescriptorFilesNames + " --- " + descriptorFilesNames);
                         // get data descriptors number
                         int currentDataDescriptorNumber = dataDescriptors.get(currentDataDescriptorName).getNumber();
                         int checkDataDescriptorNumber = dataDescriptors.get(checkDataDescriptorName).getNumber();
