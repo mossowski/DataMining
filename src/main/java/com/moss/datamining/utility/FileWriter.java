@@ -147,8 +147,8 @@ public class FileWriter {
 
     // --------------------------------------------------------------------------------
 
-    public static void saveBagOfWords() {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_BOW_PATH))) {
+    public static void saveData() {
+        try (PrintWriter pw = new PrintWriter(new FileOutputStream(ARFF_DATA_PATH))) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
             pw.println("% 1. Title: Bag of Words");
@@ -186,8 +186,8 @@ public class FileWriter {
         File arffBonFile = new File(ARFF_BON_PATH);
         arffBonFile.delete();
         // removes bow.arff file in bow directory
-        File arffBowFile = new File(ARFF_BOW_PATH);
-        arffBowFile.delete();
+        File arffDataFile = new File(ARFF_DATA_PATH);
+        arffDataFile.delete();
         // removes similar.txt file in bon directory
         File similarFile = new File(SIMILAR_PATH);
         similarFile.delete();

@@ -111,7 +111,7 @@ public class Application {
                     System.out.println("saveBagOfNounPhrases     :" + (currentTime - previousTime));
 
                     previousTime = currentTime;
-                    saveBagOfWords();
+                    saveData();
                     currentTime = System.currentTimeMillis();
                     System.out.println("saveBagOfWords           :" + (currentTime - previousTime));
 
