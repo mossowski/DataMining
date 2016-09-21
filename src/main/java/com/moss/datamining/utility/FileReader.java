@@ -19,12 +19,12 @@ public class FileReader {
      * Loads data from file
      * 
      * @param pathName
-     * @param stopwords
+     * @param stopsigns
      * @return
      */
-    public static ArrayList<Element> loadData(String pathName, String stopwordsPathName) {
+    public static ArrayList<Element> loadData(String pathName, String stopsignsPathName) {
         File file = new File(pathName);
-        ArrayList<String> stopwords = loadStopwords(stopwordsPathName);
+        ArrayList<String> stopsigns = loadStopsigns(stopsignsPathName);
         ArrayList<Element> result = new ArrayList<Element>();
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
@@ -40,7 +40,7 @@ public class FileReader {
                         if (word.equals(".")) {
                             Element element = new Element(" ", " ");
                             result.add(element);
-                        } else if (!stopwords.contains(word) && isValidWord(word)) {
+                        } else if (!stopsigns.contains(word) && isValidWord(word)) {
                             Element element = new Element(word, partOfSpeech);
                             result.add(element);
                         }
@@ -56,12 +56,12 @@ public class FileReader {
     // --------------------------------------------------------------------------------
 
     /**
-     * Loads stopwords
+     * Loads stopsigns
      * 
      * @param file
      * @return
      */
-    public static ArrayList<String> loadStopwords(String pathName) {
+    public static ArrayList<String> loadStopsigns(String pathName) {
         File file = new File(pathName);
         ArrayList<String> result = new ArrayList<String>();
         try (Scanner s = new Scanner(file)) {

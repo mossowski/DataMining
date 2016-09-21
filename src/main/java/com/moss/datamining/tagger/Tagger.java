@@ -80,7 +80,7 @@ public class Tagger {
                 String filePath = file.getPath();
                 System.out.println("Name : " + fileName);
                 System.out.println("Path : " + filePath + "\n");
-                Document document = new Document(loadData(filePath, STOPWORDS_PATH), fileName);
+                Document document = new Document(loadData(filePath, STOPSIGNS_PATH), fileName);
                 documents.put(document.getName(), document);
             }
         }
